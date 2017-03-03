@@ -12,7 +12,7 @@
     "watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
     "heroku-postbuild": "./node_modules/webpack/bin/webpack.js",
      "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha ./server/test",
-     "lint": "./node_modules/eslint/bin/eslint.js .",
+     "lint": "./node_modules/eslint/bin/eslint.js ."
   },
   "repository": {
     "type": "git",
