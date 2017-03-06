@@ -24,7 +24,7 @@ app.use(morgan(process.env.LOG_FORMAT));
 app.use(cors());
 
 app.use(require('./router/auth-router.js'));
-app.use(require('./router/page-router.js'));
+// app.use(require('./router/page-router.js'));
 
 app.use(express.static(`${__dirname}/../build`));
 app.get('*', (req,res) => res.redirect('/'));
