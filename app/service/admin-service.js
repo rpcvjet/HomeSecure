@@ -33,6 +33,7 @@ function authService($log, $q, $window, $http){
   };
 
   authService.login = (user) => {
+    console.log('these aren\'t the droids you\'re looking for');
     let url = `${__API_URL__}/api/login`;
     let encoded = $window.btoa(`${user.email}:${user.password}`);
     let config = {
