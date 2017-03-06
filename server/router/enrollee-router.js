@@ -3,14 +3,25 @@
 const {Router} = require('express');
 const jsonParser = require('body-parser').json();
 const debug = require('debug')('homeSecure:enrollee-router');
-
+const multer = require('multer');
 const Enrollee = require('../model/enrollee.js');
+const upload = multer({dest:`${__dirname}/../assets/image`});
 const bearerAuth = require('../lib/bearer-auth.js');
+const bluebird = require('bluebird');
+const fs = bluebird.promisifyAll(require('fs'));
+
 
 const enrolleeRouter = module.exports = new Router();
 
-enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, (req, res, next) => {
+enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('image'), (req, res, next) => {
   debug('POST /api/enrollee');
+  // TODO: upload to kairos here then , firebase then create enrollee
+    fs.readFileAsync(req.file.path)
+    .then(buf => {
+      let base64image = buf.toString('base64');
+      console.log(base64image);
+    })
+  console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOO',req.file);
   new Enrollee(req.body).save()
   .then(enrollee => res.json(enrollee))
   .catch(next);
