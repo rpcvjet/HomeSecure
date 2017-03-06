@@ -22,5 +22,48 @@ describe('testing auth router', () => {
       })
       .catch(done);
     });
+
+    it('should return 401', (done) => {
+      superagent.get(`${baseURL}/api/login`)
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(401);
+        done();
+      })
+      .catch(done);
+    });
+
+    it('should return 401', (done) => {
+      superagent.get(`${baseURL}/api/login`)
+      .auth('', 'blaaarg')
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(401);
+        done();
+      })
+      .catch(done);
+    });
+
+    it('should return 401', (done) => {
+      superagent.get(`${baseURL}/api/login`)
+      .auth('bluuurg', '')
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(401);
+        done();
+      })
+      .catch(done);
+    });
+
+    it('should return 401', (done) => {
+      superagent.get(`${baseURL}/api/login`)
+      .auth('401@401.com', 'bloop')
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(401);
+        done();
+      })
+      .catch(done);
+    });
   });
 });

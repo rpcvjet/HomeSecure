@@ -1,4 +1,5 @@
 # 401JS
+test/mock-env.js
 db
 .env
 data/*
