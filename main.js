@@ -14,12 +14,7 @@ const fs = require('fs');
 //     res.pipe(base64.encode()).pipe();
 // });
 
-const originalImage = 'assets/me3.jpg';
 
-fs.readFile(originalImage, 'base64', (err, data) =>{
-  if (err) throw err;
-  console.log(data);  //can now take base64 image and push or whatever
-});
 
 
 server.listen(process.env.PORT, () => {
