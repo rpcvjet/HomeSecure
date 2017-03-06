@@ -16,13 +16,14 @@ const enrolleeRouter = module.exports = new Router();
 enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('image'), (req, res, next) => {
   debug('POST /api/enrollee');
   // TODO: upload to kairos here then , firebase then create enrollee
-    fs.readFileAsync(req.file.path)
-    .then(buf => {
-      let base64image = buf.toString('base64');
-      console.log(base64image);
-    })
-  console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOO',req.file);
-  new Enrollee(req.body).save()
+  fs.readFileAsync(req.file.path)
+  .then(buf => {
+    let base64image = buf.toString('base64');
+    console.log(base64image);
+  })
+  .then()
+  // console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOO',req.file);
+  .then(new Enrollee(req.body).save())
   .then(enrollee => res.json(enrollee))
   .catch(next);
 });
