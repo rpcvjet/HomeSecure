@@ -1,9 +1,11 @@
 # 401JS
+test/mock-env.js
 db
 .env
 data/*
 coverage
 html-report
+test/mock-env.js
 
 # Created by https://www.gitignore.io/api/osx,vim,linux,windows,node
 ### OSX ###
