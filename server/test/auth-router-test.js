@@ -4,7 +4,7 @@ require('./mock-env.js');
 
 const {expect} = require('chai');
 const superagent = require('superagent');
-const serverControl = require('./server-control.js');
+const serverControl = require('./lib/server-control.js');
 const baseURL = process.env.API_URL;
 
 describe('testing auth router', () => {
