@@ -2,6 +2,8 @@
 
 process.env.PORT = 8080;
 process.env.LOG_FORMAT = 'dev';
+process.env.app_id='889f0133';
+process.env.app_key='33561cddc3553352eaed24429a411f0c';
 process.env.FIREBASE_PROJECT_ID = 'homesecure-67979';
 process.env.FIREBASE_WEB_API_KEY = 'AIzaSyDLPg9v-CXvbjpW0w09e7iyGmyReK0UAuo';
 process.env.API_URL = 'http://localhost:8080';
