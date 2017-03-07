@@ -34,3 +34,11 @@ angular.module('homeSecure', [uiRouter])
   ];
   routes.forEach(route => $stateProvider.state(route));
 }]);
+
+require('./service/admin-service.js');
+// require('./service/enrollee-service.js');
+
+require('./containers/dashboard');
+require('./containers/login');
+
+require('./components/login');
