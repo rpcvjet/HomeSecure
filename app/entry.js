@@ -11,7 +11,7 @@ angular.module('homeSecure', [uiRouter])
     {
       name: 'login',
       url: '/login',
-      template: '<login></login>',
+      template: '<admin></admin>',
     },
 
     {
@@ -36,9 +36,10 @@ angular.module('homeSecure', [uiRouter])
 }]);
 
 require('./service/admin-service.js');
-// require('./service/enrollee-service.js');
+require('./service/enrollee-service.js');
 
+require('./containers/admin');
 require('./containers/dashboard');
-require('./containers/login');
 
 require('./components/login');
+require('./components/enrollee-create');
