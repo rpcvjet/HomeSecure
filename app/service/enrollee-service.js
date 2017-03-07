@@ -1,9 +1,9 @@
 'use strict';
 
 require('angular').module('homeSecure')
-.service('enrolleeService', ['$log', '$http', 'authService', createEnrolleeService]);
+.service('enrolleeService', ['$log', '$http', 'authService', enrolleeService]);
 
-function createEnrolleeService($log, $http, authService) {
+function enrolleeService($log, $http, authService) {
   let enrolleeService = {};
 
   enrolleeService.create = (enrollee) => {
@@ -16,7 +16,7 @@ function createEnrolleeService($log, $http, authService) {
           Accept: 'application/json',
         },
       };
-      return $http.put(url, enrollee, config);
+      return $http.post(url, enrollee, config);
     })
     .then(res => res.data);
   };
