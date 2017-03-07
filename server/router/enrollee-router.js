@@ -11,6 +11,9 @@ const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const superagent = require('superagent');
 
+const gstorage = require('@google-cloud/storage')({
+  credentials: JSON.parse(process.env.FIREBASE_CERT),
+});
 
 const enrolleeRouter = module.exports = new Router();
 
@@ -33,6 +36,18 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
     });
   })
   .then(() => {
+    let bucket = gstorage.bucket(`${process.env.FIREBASE_PROJECT_ID}.appspot.com`);
+    return bucket.upload(req.file.path);
+    // console.log('sadasdasddasdasdasdasdasdasdasdasdasasd', base64image);
+    // let storage = firebase.storage();
+
+    // console.log('ref', ref)
+    // let file = '../test/lib/mock-assets/me3.jpg';
+    // return ref.put(file)
+    // .then((snapshot) => {
+    //   console.log('uploaded a base64 string', snapshot);
+    // })
+    // .catch(next);
 
   })
   .then(response => {

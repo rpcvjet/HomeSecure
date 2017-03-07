@@ -8,7 +8,7 @@ const serverControl = require('./lib/server-control.js');
 let baseURL = process.env.API_URL;
 
 describe('testing page router', function(){
-  this.timeout(5000);
+  this.timeout(20000);
   before(serverControl.start);
   after(serverControl.stop);
 
@@ -22,7 +22,7 @@ describe('testing page router', function(){
     .catch(done);
   });
   //***********************POST TESTS*******************************************
-  it('should create a Enrollee', (done) => {
+  it.only('should create a Enrollee', (done) => {
     superagent.post(`${baseURL}/api/enrollee`)
       .set('Authorization', `Bearer ${this.tempToken}`)
       .field('name', 'Ken')

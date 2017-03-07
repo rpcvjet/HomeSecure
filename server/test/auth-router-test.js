@@ -1,6 +1,6 @@
 'use strict';
 
-require('./mock-env.js');
+require('./lib/mock-env.js');
 
 const {expect} = require('chai');
 const superagent = require('superagent');
