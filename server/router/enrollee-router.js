@@ -32,6 +32,9 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
       'gallery_name': '401Practice',
     });
   })
+  .then(() => {
+
+  })
   .then(response => {
     new Enrollee(req.body).save()
     .then(enrollee => res.json(enrollee))
