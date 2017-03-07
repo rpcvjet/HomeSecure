@@ -21,7 +21,8 @@ describe('testing page router', function(){
     })
     .catch(done);
   });
-  it.only('should create a Enrollee', (done) => {
+  //***********************POST TESTS*******************************************
+  it('should create a Enrollee', (done) => {
     superagent.post(`${baseURL}/api/enrollee`)
       .set('Authorization', `Bearer ${this.tempToken}`)
       .field('name', 'Ken')
@@ -37,14 +38,9 @@ describe('testing page router', function(){
       .catch(done);
   });
 
-
   it('should respond with a 401', (done) => {
-    superagent.put(`${baseURL}/api/page`)
-    .send({
-      title: 'example page',
-      content: '# hello\n* cool\n* beans',
-      showInNav: true,
-    })
+    superagent.post(`${baseURL}/api/enrollee`)
+    .set('Authorization', `Bearer ${this.notmytoken}`)
     .then(done)
     .catch(res => {
       expect(res.status).to.equal(401);
@@ -54,9 +50,11 @@ describe('testing page router', function(){
   });
 
   it('should respond with a 400', (done) => {
-    superagent.put(`${baseURL}/api/page`)
-    .send({ title: 'example page', showInNav: true })
+    superagent.post(`${baseURL}/api/enrollee`)
     .set('Authorization', `Bearer ${this.tempToken}`)
+    .field('aacac', 'Ken')
+    .field('password', 'my voice is my password')
+    .attach('image', `${__dirname}/lib/mock-assets/me3.jpg`)
     .then(done)
     .catch(res => {
       expect(res.status).to.equal(400);
@@ -64,9 +62,9 @@ describe('testing page router', function(){
     })
     .catch(done);
   });
-
+//********************************GET TESTS*****************************************
   it('should respond with 200 and array of pages', (done) => {
-    superagent.get(`${baseURL}/api/page`)
+    superagent.get(`${baseURL}/api/enrollee`)
     .then(res => {
       expect(res.status).to.equal(200);
       expect(Array.isArray(res.body)).to.equal(true);
@@ -93,7 +91,7 @@ describe('testing page router', function(){
     .catch(done);
 
   });
-
+//*********************************DELETE TESTS******************************************88
   it('should respond with a 401 error', (done) => {
     superagent.delete(`${baseURL}/api/page/${this.tempPage.id}`)
     .then(done)
