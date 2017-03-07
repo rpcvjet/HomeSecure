@@ -22,13 +22,17 @@ function enrolleeService($log, $http, authService) {
   };
 
   enrolleeService.fetchAll = () => {
-    let url = `${__API_URL__}/api/enrollee`;
-    let config = {
-      headers: {
-        Accept: 'application/json',
-      },
-    };
-    return $http.get(url, config)
+    return authService.tokenFetch()
+    .then(token => {
+      let url = `${__API_URL__}/api/enrollee`;
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      };
+      return $http.get(url, config);
+    })
     .then(res => res.data);
   };
 
