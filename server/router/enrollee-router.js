@@ -10,6 +10,7 @@ const bearerAuth = require('../lib/bearer-auth.js');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const superagent = require('superagent');
+const path = require('path');
 
 const gstorage = require('@google-cloud/storage')({
   credentials: JSON.parse(process.env.FIREBASE_CERT),
@@ -38,26 +39,33 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
   .then(() => {
     let bucket = gstorage.bucket(`${process.env.FIREBASE_PROJECT_ID}.appspot.com`);
     return bucket.upload(req.file.path);
-    // console.log('sadasdasddasdasdasdasdasdasdasdasdasasd', base64image);
-    // let storage = firebase.storage();
 
-    // console.log('ref', ref)
-    // let file = '../test/lib/mock-assets/me3.jpg';
-    // return ref.put(file)
-    // .then((snapshot) => {
-    //   console.log('uploaded a base64 string', snapshot);
-    // })
+// MAKE THIS OUT OF response.name below
+// `https://firebasestorage.googleapis.com/v0/b/homesecure-67979.appspot.com/o/${response.name}?alt=media`
     // .catch(next);
 
   })
   .then(response => {
-    new Enrollee(req.body).save()
-    .then(enrollee => res.json(enrollee))
+    console.log('response==============================>',response[0].name);
+    // console.log('responseAGAIN==============================>',response);
+
+    return new Enrollee ({
+
+      password: req.body.password,
+      name: req.body.name,
+      img: `https://firebasestorage.googleapis.com/v0/b/homesecure-67979.appspot.com/o/${response[0].name}?alt=media`,
+
+
+    }).save()
+    .then(enrollee => {
+      console.log('you enrolled a user>>>>>>>>>>>>>>>>>>>>>>>', enrollee);
+      res.json(enrollee);
+    })
     .catch(next);
-    console.log('boooooyahhhh', response);
+
   })
   .catch(err => {
-    console.log('sadasdasasdasdas', err);
+    console.log('NOPEEEEEEEE', err);
     next(err);
   });
 
