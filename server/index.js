@@ -6,12 +6,14 @@ const morgan = require('morgan');
 const firebase = require('firebase');
 const admin = require('firebase-admin');
 
+
+
+
 firebase.initializeApp({
   apiKey: process.env.FIREBASE_WEB_API_KEY,
   authDomain: `${process.env.FIREBASE_PROJECT_ID}.firebaseapp.com`,
   databaseURL: `${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`,
   storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
-
 });
 
 admin.initializeApp({
