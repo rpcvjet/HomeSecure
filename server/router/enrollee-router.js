@@ -10,7 +10,6 @@ const bearerAuth = require('../lib/bearer-auth.js');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const superagent = require('superagent');
-const firebase = require('firebase');
 
 const gstorage = require('@google-cloud/storage')({
   credentials: JSON.parse(process.env.FIREBASE_CERT),
