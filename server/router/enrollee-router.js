@@ -36,7 +36,7 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
     new Enrollee(req.body).save()
     .then(enrollee => res.json(enrollee))
     .catch(next);
-    console.log('boooooyahhhh', res.status);
+    console.log('boooooyahhhh', response);
   })
   .catch(err => {
     console.log('sadasdasasdasdas', err);

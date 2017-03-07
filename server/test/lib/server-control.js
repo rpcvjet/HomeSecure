@@ -21,6 +21,6 @@ serverControl.stop = (done) => {
       app.isRunning = false;
       console.log('server stoped');
       done();
-    })
+    });
   done();
-}
+};
