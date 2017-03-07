@@ -4,7 +4,7 @@
   "description": "401 Final Project",
   "main": "main.js",
   "engines": {
-    "node": "7.2.0"
+    "node": "6.9.2"
   },
   "scripts": {
     "start": "node main.js",
