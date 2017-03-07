@@ -1,0 +1,21 @@
+<div class="dashboard">
+  <h1> HomeSecure </h1>
+  <button ng-click="$ctrl.enrolleeLogout()"> LOGOUT </button>
+
+  <enrollee-create
+    enrollee="$ctrl.createEnrollee"
+    handle-submit="$ctrl.createHandleSubmit">
+  <enrollee-create>
+
+    <ul>
+      <enrollee-item
+      ng-repeat="item in $ctrl.enrollees track by $index"
+      enrollee="item"
+      handle-delete="$ctrl.enrolleeHandleDelete"
+      handle-select="$ctrl.enrolleeHandleSelect">
+      <!-- <button ng-click="$ctrl.handleEnrolleeNew()"> NEW </button>
+      <button ng-click="$ctrl.handleEnrolleeDelete"> DELETE </button> -->
+    </enrollee-item>
+
+    </ul>
+</div>
