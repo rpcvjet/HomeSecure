@@ -76,7 +76,7 @@ describe('testing page router', function(){
   it('shuold update the page', (done) => {
     this.tempPage.title = 'lulwat';
 
-    superagent.put(`${baseURL}/api/page`)
+    superagent.put(`${baseURL}/api/enrollee`)
     .send(this.tempPage)
     .set('Authorization', `Bearer ${this.tempToken}`)
     .then(res => {
@@ -93,7 +93,7 @@ describe('testing page router', function(){
   });
 //*********************************DELETE TESTS******************************************88
   it('should respond with a 401 error', (done) => {
-    superagent.delete(`${baseURL}/api/page/${this.tempPage.id}`)
+    superagent.delete(`${baseURL}/api/enrollee/${this.tempPage.id}`)
     .then(done)
     .catch(res => {
       expect(res.status).to.equal(401);
@@ -103,7 +103,7 @@ describe('testing page router', function(){
   });
 
   it('should delete the page', (done) => {
-    superagent.delete(`${baseURL}/api/page/${this.tempPage.id}`)
+    superagent.delete(`${baseURL}/api/enrollee/${this.tempPage.id}`)
     .set('Authorization', `Bearer ${this.tempToken}`)
     .then(res => {
       expect(res.status).to.equal(204);
