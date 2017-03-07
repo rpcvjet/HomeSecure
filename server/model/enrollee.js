@@ -8,7 +8,7 @@ const Enrollee = module.exports = function(opts){
 
   this.id = opts.id || uuid.v1(); //what we use for subject_id in API call
   this.name = opts.name;  //asteetic update
-  // this.img = opts.img; //actual photo
+  this.img = opts.img; //actual photo
   this.password = opts.password;
 };
 
@@ -43,7 +43,6 @@ Enrollee.prototype.validate = function(){
 Enrollee.prototype.save = function(){
   return this.validate()
   .then( () => {
-    console.log('this==================>',this);
     return firebase.database().ref('/enrollee')
     .child(this.id).set(this);
   })
