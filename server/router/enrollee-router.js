@@ -9,6 +9,7 @@ const upload = multer({dest:`${__dirname}/../assets/image`});
 const bearerAuth = require('../lib/bearer-auth.js');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
+const superagent = require('superagent');
 
 
 const enrolleeRouter = module.exports = new Router();
@@ -16,15 +17,32 @@ const enrolleeRouter = module.exports = new Router();
 enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('image'), (req, res, next) => {
   debug('POST /api/enrollee');
   // TODO: upload to kairos here then , firebase then create enrollee
-    fs.readFileAsync(req.file.path)
-    .then(buf => {
-      let base64image = buf.toString('base64');
-      console.log(base64image);
-    })
-  console.log('OOOOOOOOOOOOOOOOOOOOOOOOOOO',req.file);
-  new Enrollee(req.body).save()
-  .then(enrollee => res.json(enrollee))
-  .catch(next);
+  fs.readFileAsync(req.file.path)
+  .then(buf => {
+    let base64image = buf.toString('base64');
+    return base64image;
+  })
+  .then((base64image) => {
+    return superagent.post('https://api.kairos.com/enroll')
+    .set('app_id', process.env.app_id)
+    .set('app_key', process.env.app_key)
+    .send({
+      'image' : base64image,
+      'subject_id' : 'myPic',
+      'gallery_name': '401Practice',
+    });
+  })
+  .then(response => {
+    new Enrollee(req.body).save()
+    .then(enrollee => res.json(enrollee))
+    .catch(next);
+    console.log('boooooyahhhh', response);
+  })
+  .catch(err => {
+    console.log('sadasdasasdasdas', err);
+    next(err);
+  });
+
 });
 
 enrolleeRouter.get('/api/enrollee', bearerAuth, jsonParser, (req, res, next) => {
