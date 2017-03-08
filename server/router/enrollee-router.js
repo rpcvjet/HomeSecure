@@ -86,11 +86,14 @@ enrolleeRouter.get('/api/enrollee/:id', bearerAuth, jsonParser, (req, res, next)
   .catch(next);
 });
 
-enrolleeRouter.put('/api/enrollee/:id', bearerAuth, jsonParser, (req, res, next) => {
+enrolleeRouter.delete('/api/enrollee/:id', bearerAuth, jsonParser, (req, res, next) => {
   //TODO further checks needed on functionality. Still unsure on how to adjust this put request
-  debug('PUT /api/enrollee/:id');
+  debug('DELETE /api/enrollee/:id');
   Enrollee.findByIdAndDelete(req.params.id)
   .then(new Enrollee(req.body).save())
-  .then(enrollee => res.json(enrollee))
+  .then(enrollee => {
+    res.sendStatus(204);
+    console.log(enrollee);
+  })
   .catch(next);
 });

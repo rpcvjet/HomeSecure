@@ -7,7 +7,7 @@ const serverControl = require('./lib/server-control.js');
 
 let baseURL = process.env.API_URL;
 
-describe('testing page router', function(){
+describe.only('testing page router', function(){
   this.timeout(20000);
   before(serverControl.start);
   after(serverControl.stop);
@@ -29,6 +29,7 @@ describe('testing page router', function(){
       .field('password', 'my voice is my password')
       .attach('image', `${__dirname}/lib/mock-assets/me3.jpg`)
       .then(res => {
+        this.tempEnrollee = res.body;
         expect(res.status).to.equal(200);
         // expect(!!res.body.id).to.equal(true);
         expect(res.body.name).to.equal('Ken');
@@ -63,47 +64,28 @@ describe('testing page router', function(){
     .catch(done);
   });
 //********************************GET TESTS*****************************************
-  it('should respond with 200 and array of pages', (done) => {
-    superagent.get(`${baseURL}/api/enrollee`)
-    .then(res => {
-      expect(res.status).to.equal(200);
-      expect(Array.isArray(res.body)).to.equal(true);
-      done();
-    })
-    .catch(done);
-  });
+  // it('should respond with 200 and array of pages', (done) => {
+  //   superagent.get(`${baseURL}/api/enrollee`)
+  //   .then(res => {
+  //     expect(res.status).to.equal(200);
+  //     expect(Array.isArray(res.body)).to.equal(true);
+  //     done();
+  //   })
+  //   .catch(done);
+  // });
 
-  it('shuold update the page', (done) => {
-    this.tempPage.title = 'lulwat';
-
-    superagent.put(`${baseURL}/api/enrollee`)
-    .send(this.tempPage)
-    .set('Authorization', `Bearer ${this.tempToken}`)
-    .then(res => {
-      this.tempPage = res.body;
-      expect(res.status).to.equal(200);
-      expect(!!res.body.id).to.equal(true);
-      expect(res.body.title).to.equal('lulwat');
-      expect(res.body.content).to.equal('# hello\n* cool\n* beans');
-      expect(res.body.showInNav).to.equal(true);
-      done();
-    })
-    .catch(done);
-
-  });
 //*********************************DELETE TESTS******************************************88
-  it('should respond with a 401 error', (done) => {
-    superagent.delete(`${baseURL}/api/enrollee/${this.tempPage.id}`)
-    .then(done)
-    .catch(res => {
-      expect(res.status).to.equal(401);
-      done();
-    })
-    .catch(done);
-  });
+  // it('should respond with a 204 status', (done) => {
+  //   superagent.delete(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
+  //     .then(res => {
+  //       expect(res.status).to.equal(401);
+  //     done();
+  //   })
+  //   .catch(done);
+  // });
 
   it('should delete the page', (done) => {
-    superagent.delete(`${baseURL}/api/enrollee/${this.tempPage.id}`)
+    superagent.delete(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
     .set('Authorization', `Bearer ${this.tempToken}`)
     .then(res => {
       expect(res.status).to.equal(204);

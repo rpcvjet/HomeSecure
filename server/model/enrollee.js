@@ -19,7 +19,7 @@ Enrollee.fetchAll = function(){
 
   });
 };
-Enrollee.findIdAndDelete = function(id){
+Enrollee.findByIdAndDelete = function(id){
   return firebase.database().ref('/enrollee')
   .child(id).remove()
   .then( () => firebase.auth().signOut())

@@ -7,7 +7,7 @@ const superagent = require('superagent');
 const serverControl = require('./lib/server-control.js');
 const baseURL = process.env.API_URL;
 
-describe.only('testing unlock router', function() {
+describe('testing unlock router', function() {
   this.timeout(30000);
   before(serverControl.start);
   after(serverControl.stop);
