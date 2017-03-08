@@ -14,12 +14,13 @@ require('angular').module('homeSecure')
         this.enrollees = enrollees;
       }).catch($log.error);
 
-      this.createEnrollee = {name: '', password: ''};
+      this.createEnrollee = {name: '', password: '', img: ''};
       this.createHandleSubmit = () => {
-        enrolleeService.create(this.createEnrollee)
+        console.log(this.createEnrollee, 'what is in here????');
+        enrolleeService.create(this.createEnrollee, this.createEnrollee.img)
         .then(enrollee => {
           this.enrollees.push(enrollee);
-          this.createEnrollee = {name: '', password: ''};
+          this.createEnrollee = {name: '', password: '', img: ''};
         }).catch($log.error);
       };
 
