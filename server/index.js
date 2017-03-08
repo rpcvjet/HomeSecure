@@ -27,6 +27,8 @@ app.use(cors());
 
 app.use(require('./router/auth-router.js'));
 app.use(require('./router/enrollee-router.js'));
+app.use(require('./router/unlock-router.js'));
+
 
 app.use(express.static(`${__dirname}/../build`));
 app.get('*', (req,res) => res.redirect('/'));

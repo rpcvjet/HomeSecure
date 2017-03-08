@@ -10,7 +10,7 @@ const bearerAuth = require('../lib/bearer-auth.js');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const superagent = require('superagent');
-const path = require('path');
+const uuid = require('uuid');
 
 const gstorage = require('@google-cloud/storage')({
   credentials: JSON.parse(process.env.FIREBASE_CERT),
@@ -20,6 +20,7 @@ const enrolleeRouter = module.exports = new Router();
 
 enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('image'), (req, res, next) => {
   debug('POST /api/enrollee');
+  let subject_id = uuid.v1();
   // TODO: upload to kairos here then , firebase then create enrollee
   fs.readFileAsync(req.file.path)
   .then(buf => {
@@ -32,7 +33,7 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
     .set('app_key', process.env.app_key)
     .send({
       'image' : base64image,
-      'subject_id' : 'myPic',
+      'subject_id' : subject_id,
       'gallery_name': '401Practice',
     });
   })
@@ -50,7 +51,7 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
     // console.log('responseAGAIN==============================>',response);
 
     return new Enrollee ({
-
+      id: subject_id,
       password: req.body.password,
       name: req.body.name,
       img: `https://firebasestorage.googleapis.com/v0/b/homesecure-67979.appspot.com/o/${response[0].name}?alt=media`,

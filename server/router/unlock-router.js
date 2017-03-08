@@ -1,0 +1,48 @@
+'use strict';
+
+const {Router} = require('express');
+const jsonParser = require('body-parser').json();
+const debug = require('debug')('homeSecure:enrollee-router');
+const multer = require('multer');
+const Enrollee = require('../model/enrollee.js');
+const upload = multer({dest:`${__dirname}/../assets/image`});
+const bearerAuth = require('../lib/bearer-auth.js');
+const bluebird = require('bluebird');
+const fs = bluebird.promisifyAll(require('fs'));
+const superagent = require('superagent');
+const uuid = require('uuid');
+const createError = require('http-errors');
+
+
+const unlockRouter = module.exports = new Router();
+
+unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, next) => {
+  fs.readFileAsync(req.file.path)
+  .then(buf => {
+    let base64image = buf.toString('base64');
+    return base64image;
+  })
+  .then((base64image) => {
+    return superagent.post('https://api.kairos.com/recognize')
+    .set('app_id', process.env.app_id)
+    .set('app_key', process.env.app_key)
+    .send({
+      'image' : base64image,
+      'gallery_name': '401Practice',
+      'threshold': '0.75',
+      'max_num_results': 1,
+    });
+  })
+  .then((response) => {
+    if (response.body.images[0].transaction.status === 'failure')
+      throw createError(401, 'transaction failed, no match');
+    res.sendStatus(200);
+
+  })
+  .catch(err =>{
+    console.log(err);
+    res.sendStatus(401);
+
+  });
+
+});

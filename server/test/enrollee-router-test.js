@@ -22,7 +22,7 @@ describe('testing page router', function(){
     .catch(done);
   });
   //***********************POST TESTS*******************************************
-  it.only('should create a Enrollee', (done) => {
+  it('should create a Enrollee', (done) => {
     superagent.post(`${baseURL}/api/enrollee`)
       .set('Authorization', `Bearer ${this.tempToken}`)
       .field('name', 'Ken')
