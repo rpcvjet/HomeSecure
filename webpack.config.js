@@ -34,12 +34,22 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        loader: ExtractText.extract(['css-loader', 'sass-loader']),
+        loader: ExtractText.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap'],
+        }),
       },
-
       {
         test: /\.html$/,
         loader: 'html-loader',
+      },
+      {
+        test: /\.(jpg|jpeg|bmp|tiff|gif|png)$/,
+        loader: 'url-loader?limit=10000&name=image/[hash].[ext]',
+      },
+      {
+        test: /\.(woff|ttf|svg|eot).*/,
+        loader: 'url-loader?limit=10000&name=font/[name].[ext]',
       },
     ],
   },

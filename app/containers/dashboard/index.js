@@ -27,7 +27,7 @@ require('angular').module('homeSecure')
       this.itemHandleDelete = (enrollee) => {
         enrolleeService.delete(enrollee)
         .then(() => {
-          this.enrollees = this.enrollees.filter(item => !(item._id == enrollee._id));
+          this.enrollees = this.enrollees.filter(item => item.id !== enrollee.id);
         })
         .catch($log.error);
       };
