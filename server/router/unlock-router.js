@@ -6,17 +6,16 @@ const debug = require('debug')('homeSecure:enrollee-router');
 const multer = require('multer');
 const Enrollee = require('../model/enrollee.js');
 const upload = multer({dest:`${__dirname}/../assets/image`});
-const bearerAuth = require('../lib/bearer-auth.js');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const superagent = require('superagent');
-const uuid = require('uuid');
 const createError = require('http-errors');
 
 
 const unlockRouter = module.exports = new Router();
 
 unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, next) => {
+  debug('POST enrollee');
   fs.readFileAsync(req.file.path)
   .then(buf => {
     let base64image = buf.toString('base64');
