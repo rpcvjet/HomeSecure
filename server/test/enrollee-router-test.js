@@ -7,7 +7,7 @@ const serverControl = require('./lib/server-control.js');
 
 let baseURL = process.env.API_URL;
 
-describe.only('testing page router', function(){
+describe('testing enrollee router', function(){
   this.timeout(20000);
   before(serverControl.start);
   after(serverControl.stop);
@@ -64,25 +64,44 @@ describe.only('testing page router', function(){
     .catch(done);
   });
 //********************************GET TESTS*****************************************
-  // it('should respond with 200 and array of pages', (done) => {
-  //   superagent.get(`${baseURL}/api/enrollee`)
-  //   .then(res => {
-  //     expect(res.status).to.equal(200);
-  //     expect(Array.isArray(res.body)).to.equal(true);
-  //     done();
-  //   })
-  //   .catch(done);
-  // });
+  it('should respond with 200', (done) => {
+    superagent.get(`${baseURL}/api/enrollee`)
+    .set('Authorization', `Bearer ${this.tempToken}`)
+    .then(res => {
+      expect(res.status).to.equal(200);
+      done();
+    })
+    .catch(done);
+  });
+  it('should respond with a 401 status', (done) => {
+    superagent.get(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
+    .then(done)
+    .catch(res => {
+      expect(res.status).to.equal(401);
+      done();
+    })
+    .catch(done);
+  });
 
 //*********************************DELETE TESTS******************************************88
-  // it('should respond with a 204 status', (done) => {
-  //   superagent.delete(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
-  //     .then(res => {
-  //       expect(res.status).to.equal(401);
-  //     done();
-  //   })
-  //   .catch(done);
-  // });
+  it('should respond with a 401 status', (done) => {
+    superagent.delete(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
+    .then(done)
+    .catch(res => {
+      expect(res.status).to.equal(401);
+      done();
+    })
+    .catch(done);
+  });
+  it('should respond with a 404 status', (done) => {
+    superagent.delete(`${baseURL}/api/enrolle/${this.tempEnrollee.id}`)
+    .then(done)
+    .catch(res => {
+      expect(res.status).to.equal(404);
+      done();
+    })
+    .catch(done);
+  });
 
   it('should delete the page', (done) => {
     superagent.delete(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)

@@ -23,7 +23,7 @@ describe('testing unlock router', function() {
       })
       .catch(done);
     });
-    it('should respond with a  status of 200', (done) => {
+    it('should respond with a  status of 401', (done) => {
       superagent.post(`${baseURL}/api/unlock`)
       .field('password', 'my voice is my password')
       .attach('image', `${__dirname}/lib/mock-assets/devon.jpg`)
