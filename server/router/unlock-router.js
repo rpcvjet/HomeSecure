@@ -4,7 +4,7 @@ const {Router} = require('express');
 const jsonParser = require('body-parser').json();
 const debug = require('debug')('homeSecure:enrollee-router');
 const multer = require('multer');
-const Enrollee = require('../model/enrollee.js');
+// const Enrollee = require('../model/enrollee.js');
 const upload = multer({dest:`${__dirname}/../assets/image`});
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
@@ -42,6 +42,7 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
     console.log(err);
     res.sendStatus(401);
 
-  });
+  })
+  .catch(next);
 
 });
