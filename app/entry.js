@@ -2,8 +2,9 @@
 
 const angular = require('angular');
 const uiRouter = require('angular-ui-router');
+const ngFileUpload  = require('ng-file-upload');
 
-angular.module('homeSecure', [uiRouter])
+angular.module('homeSecure', [uiRouter, ngFileUpload])
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('', '/login');
 

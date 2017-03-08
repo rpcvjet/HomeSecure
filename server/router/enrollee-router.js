@@ -24,10 +24,12 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
   // TODO: upload to kairos here then , firebase then create enrollee
   fs.readFileAsync(req.file.path)
   .then(buf => {
+    console.log('hit line 27????');
     let base64image = buf.toString('base64');
     return base64image;
   })
   .then((base64image) => {
+    console.log('hit line 32????');
     return superagent.post('https://api.kairos.com/enroll')
     .set('app_id', process.env.app_id)
     .set('app_key', process.env.app_key)
@@ -38,6 +40,7 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
     });
   })
   .then(() => {
+    console.log('hitting line 43???');
     let bucket = gstorage.bucket(`${process.env.FIREBASE_PROJECT_ID}.appspot.com`);
     return bucket.upload(req.file.path);
 
@@ -48,6 +51,7 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
   })
   .then(response => {
     console.log('response==============================>',response[0].name);
+    console.log(req.body, 'whats here????');
     // console.log('responseAGAIN==============================>',response);
 
     return new Enrollee ({
