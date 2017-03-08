@@ -6,5 +6,6 @@ require('angular').module('homeSecure')
   bindings: {
     enrollee: '<',
     handleSubmit: '<',
+    handleDelete: '<',
   },
 });

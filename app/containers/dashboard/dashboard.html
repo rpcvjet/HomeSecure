@@ -11,8 +11,7 @@
       <enrollee-item
       ng-repeat="item in $ctrl.enrollees track by $index"
       enrollee="item"
-      handle-delete="$ctrl.enrolleeHandleDelete">
-      <button ng-click="$ctrl.handleEnrolleeDelete"> DELETE </button>
+      handle-delete="$ctrl.itemHandleDelete">
      </enrollee-item>
    </ul>
 
