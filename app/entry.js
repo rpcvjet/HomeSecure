@@ -43,3 +43,4 @@ require('./containers/dashboard');
 
 require('./components/login');
 require('./components/enrollee-create');
+require('./components/enrollee-item');

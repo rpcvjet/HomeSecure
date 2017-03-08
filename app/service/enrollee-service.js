@@ -33,7 +33,12 @@ function enrolleeService($log, $http, authService) {
       };
       return $http.get(url, config);
     })
-    .then(res => res.data);
+    // .then(res => res.data);
+    .then(res => {
+      console.log(res.data, 'data in service');
+      return res.data;
+    });
+
   };
 
   enrolleeService.delete = (enrollee) => {

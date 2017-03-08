@@ -12,7 +12,6 @@ require('angular').module('homeSecure')
       enrolleeService.fetchAll()
       .then(enrollees => {
         this.enrollees = enrollees;
-        this.enrollees = this.enrollees[0];
       }).catch($log.error);
 
       this.createEnrollee = {name: '', password: ''};
