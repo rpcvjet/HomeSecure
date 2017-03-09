@@ -1,9 +1,12 @@
-<div class="login">
-  <form
-    ng-submit="$ctrl.handleSubmit($ctrl.user)"
-    novalidate>
-    <input type="email" ng-model="$ctrl.user.email" placeholder="email">
-    <input type="password" ng-model="$ctrl.user.password" placeholder="password">
-    <button class="btn btn-primary"> login </button>
-  </form>
+<div class="">
+  <h2 class="login-message"> Login To HomeSecure </h2>
+  <div class="login">
+    <form
+      ng-submit="$ctrl.handleSubmit($ctrl.user)"
+      novalidate>
+      <input class="email" type="email" ng-model="$ctrl.user.email" placeholder="email">
+      <input class="email" type="password" ng-model="$ctrl.user.password" placeholder="password">
+      <button class="btn btn-primary"> login </button>
+    </form>
+  </div>
 </div>
