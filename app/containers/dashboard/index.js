@@ -1,5 +1,8 @@
 'use strict';
 
+
+require('./_dashboard.scss');
+
 require('angular').module('homeSecure')
 .component('dashboard', {
   template: require('./dashboard.html'),

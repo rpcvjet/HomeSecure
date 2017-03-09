@@ -36,6 +36,7 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
   .then((response) => {
     if (response.body.images[0].transaction.status === 'failure')
       throw createError(401, 'transaction failed, face did not match');
+    res.sendStatus(200);
     let enrolleeID = response.body.images[0].transaction.subject_id;
     return enrolleeID;
   })
