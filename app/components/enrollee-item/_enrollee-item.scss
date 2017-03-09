@@ -1,0 +1,81 @@
+@import  "../../scss/_theme.scss";
+@import "../../scss/_custombootstrap";
+@import "../../scss/_layout.scss";
+
+li {
+  list-style: none;
+}
+
+.text-form {
+  width: 100%;
+  padding: $form-padding;
+  }
+
+.file-upload {
+  display: block;
+  border-radius: 45px;
+  width: 8em;
+  height: 2em;
+  padding: $form-padding;
+  font-size: .5em;
+}
+
+.enrollee-item {
+  position: relative;
+  background-color: $c-greydark;
+  opacity: 0.8;
+  width: 30%;
+  display: inline-block;
+  margin-left: $s-pad * 2;
+  border: 0.2em solid $c-greylight;
+  padding: $s-pad * 2;
+  img {
+    border: .15em solid black;
+    padding: 0;
+    max-width:100%;
+    max-height:auto;
+    margin-top:10%;
+  }
+  .delete {
+    position: absolute;
+    top: 0px;
+    right:10px;
+    width: 9%;
+    height:8%;
+    padding: $s-pad;
+    margin-top:0.6em;
+    margin-bottom:20%;
+    font-size:0.5em;
+    font-weight: 500;
+
+    &:hover {
+      background-color:$code-color;
+      color:$c-white;
+    }
+  }
+}
+
+
+
+
+.display-info {
+  display: inline-block;
+  padding: 0;
+  font-weight: 200;
+  font-family: monospace;
+  font-size: 1em;
+  color:$c-white;
+
+  span {
+    font-family: monospace;
+    color: $c-greylight;
+  }
+  .pw{
+    color:$c-greydark;
+
+    &:hover {
+      color:$c-black;
+    }
+  }
+
+}

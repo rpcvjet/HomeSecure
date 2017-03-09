@@ -2,7 +2,9 @@
 @import "../../scss/_custombootstrap";
 
 .home-header {
+  position: relative;
   margin: 0;
+  margin-left: $s-pad * 4;
   background-color:$c-greylight;
   color:$c-greydark;
   box-sizing: border-box;
@@ -11,9 +13,9 @@
   .logout-btn {
     position: absolute;
     width: 10%;
-    height: 5%;
-    top: 40px;
-    right: 50px;
+    height: 15%;
+    top: 20px;
+    right: 80px;
     color: $c-white;
     background-color: $c-greydark;
     &:hover {
@@ -27,13 +29,18 @@
   }
 
   h1{
+    font-family: $font-six;
+    padding:$s-pad;
+    letter-spacing: 0.5em;
     font-size: 3em;
+    font-weight: 600;
     margin-left: $s-margin-left;
     margin-bottom: $s-margin-bottom;
 
     span {
       color:$code-color;
-      font-size: 2em;
+      font-size: 3em;
+      font-weight: 400;
     }
   }
 
