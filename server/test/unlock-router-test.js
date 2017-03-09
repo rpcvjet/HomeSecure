@@ -6,10 +6,44 @@ const {expect} = require('chai');
 const superagent = require('superagent');
 const serverControl = require('./lib/server-control.js');
 const baseURL = process.env.API_URL;
+// const userMocks = require('./lib/userMocks.js');
 
-describe('testing unlock router', function() {
+describe.only('testing unlock router', function() {
   this.timeout(30000);
   before(serverControl.start);
+  before(done => {
+    superagent.get(`${baseURL}/api/login`)
+    .auth('401@401.com', 'weare401')
+    .then(res => {
+      this.tempToken = res.text;
+      done();
+    })
+    .catch(done);
+  });
+
+  before(done => {
+    superagent.post(`${baseURL}/api/enrollee`)
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .field('name', 'Ken')
+      .field('password', 'my voice is my password')
+      .attach('image', `${__dirname}/lib/mock-assets/me3.jpg`)
+      .then(res => {
+        this.tempEnrollee = res.body;
+        console.log(res.body);
+      })
+      .then(done);
+  });
+
+  after(done =>  {
+    superagent.delete(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
+    .set('Authorization', `Bearer ${this.tempToken}`)
+    .then(res => {
+      done();
+      console.log(res.body);
+    })
+    .catch(done);
+  });
+
   after(serverControl.stop);
 
   describe('testing POST /api/unlock', () => {

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Six+Caps');
+// color vars
+$c-black: #000;
+$c-white: #fff;
+$c-greydark: #626870;
+$c-grey: #444;;
+$c-greylight: #F3F2F4;
+$c-teal:#A3B9DB;
+$c-tan:#F0D6BC;
+$c-brown:#C0A6A4;
+$c-primary: #77affa;
+$c-success: #7fa;
+$c-error: #ffaaff;
+
+
+// space vars
+$s-pad: 0.5em;
+$s-pad-top: 0.5em;
+$s-margin-bottom: 0.5em;
+$s-margin-left: 0.5em;
+$s-margin-right: 0.5em;
+
+
+//fonts
+$font-lora: 'Lora', serif;
+$font-six: 'Six Caps', sans-serif;
+
+// theme mixins
+@mixin border {
+  border: 0.15em solid black;
+}
+
+// @mixin headingRatio($scale){
+//   @function headingMagic($num) {
+//     @return ( 8 - ($num * 0.8));
+//   }
+//
+//   @for $i from 1 through 6 {
+//     h#{$i} {
+//       font-size: headingMagic($i) * $scale * 1vw;
+//       a {
+//         font-size: headingMagic($i) * $scale * 1vw;
+//       }
+//       margin-bottom: $i / 6 * 0.5em;;
+//     }
+//   }
+// }
+
+// theme classes
+.bubble {
+  padding: $s-pad;
+}
+
+.primary {
+  background-color: $c-primary;
+}
+
+.success {
+  background-color: $c-success;
+}
+
+.error {
+  background-color: $c-error;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
