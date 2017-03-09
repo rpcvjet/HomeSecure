@@ -31,7 +31,6 @@ describe('testing enrollee router', function(){
       .then(res => {
         this.tempEnrollee = res.body;
         expect(res.status).to.equal(200);
-        // expect(!!res.body.id).to.equal(true);
         expect(res.body.name).to.equal('Ken');
         expect(res.body.password).to.equal('my voice is my password');
         done();
@@ -73,11 +72,10 @@ describe('testing enrollee router', function(){
     })
     .catch(done);
   });
-  it('should respond with a 401 status', (done) => {
+  it('should respond with a 200 status', (done) => {
     superagent.get(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
-    .then(done)
-    .catch(res => {
-      expect(res.status).to.equal(401);
+    .then(res => {
+      expect(res.status).to.equal(200);
       done();
     })
     .catch(done);
@@ -103,7 +101,7 @@ describe('testing enrollee router', function(){
     .catch(done);
   });
 
-  it('should delete the page', (done) => {
+  it('should delete the enrollee', (done) => {
     superagent.delete(`${baseURL}/api/enrollee/${this.tempEnrollee.id}`)
     .set('Authorization', `Bearer ${this.tempToken}`)
     .then(res => {
