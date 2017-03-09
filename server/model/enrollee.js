@@ -13,7 +13,6 @@ Enrollee.fetchAll = function(){
   return firebase.database().ref('/enrollee').once('value')
   .then(snapShot => {
     let data = snapShot.val();
-    console.log('this is the fetch all for Enrollee');
     let enrollee = Object.keys(data).map(key => data[key]);
     return enrollee;
 
@@ -28,6 +27,21 @@ Enrollee.findByIdAndDelete = function(id){
     throw err;
   });
 };
+Enrollee.findById = function(id){
+  let value;
+  return firebase.database().ref('/enrollee').once('value')
+  .then(snapShot => {
+    let data = snapShot.val();
+    value= data[id];
+  })
+  .then(() => firebase.auth().signOut())
+  .then(() => value)
+  .catch(err => {
+    firebase.auth().signOut();
+    throw err;
+  });
+};
+
 Enrollee.prototype.validate = function(){
   if(!this.id || !this.password || !this.name)
     return Promise.reject(createError(400, 'missing a required property'));
