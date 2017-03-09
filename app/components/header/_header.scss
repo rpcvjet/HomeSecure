@@ -1,0 +1,40 @@
+@import  "../../scss/_theme.scss";
+@import "../../scss/_custombootstrap";
+
+.home-header {
+  margin: 0;
+  background-color:$c-greylight;
+  color:$c-greydark;
+  box-sizing: border-box;
+  padding: $s-pad * 0.5;
+
+  .logout-btn {
+    position: absolute;
+    width: 10%;
+    height: 5%;
+    top: 40px;
+    right: 50px;
+    color: $c-white;
+    background-color: $c-greydark;
+    &:hover {
+      background-color: $c-greylight * 0.5;
+    }
+
+    &:active{
+      background-color: $c-greylight * 0.5;
+      outline:none;
+    }
+  }
+
+  h1{
+    font-size: 3em;
+    margin-left: $s-margin-left;
+    margin-bottom: $s-margin-bottom;
+
+    span {
+      color:$code-color;
+      font-size: 2em;
+    }
+  }
+
+}

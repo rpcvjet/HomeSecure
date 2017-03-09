@@ -12,16 +12,10 @@
 .dashboard {
   height:100%;
   font-family: $font-lora;
+  background-color: none;
   button{
     width:18%;
     border-radius: $btn-border-radius-large;
-  }
-  .logout-btn {
-    width: 18%;
-  }
-  h1{
-    font-size: $font-size-h1;
-    margin-bottom: $s-margin-bottom * 2;
   }
 
   li {

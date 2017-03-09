@@ -1,5 +1,4 @@
 'use strict';
-
 require('./_login.scss');
 
 require('angular').module('homeSecure')

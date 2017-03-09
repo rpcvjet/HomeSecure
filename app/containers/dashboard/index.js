@@ -8,10 +8,10 @@ require('angular').module('homeSecure')
   template: require('./dashboard.html'),
   controller: ['$log', '$location', 'enrolleeService', 'authService', function($log, $location, enrolleeService, authService){
     this.$onInit = () => {
-      this.enrolleeLogout = () => {
-        authService.logout()
-        .then(() => $location.path('/login'));
-      };
+      // this.enrolleeLogout = () => {
+      //   authService.logout()
+      //   .then(() => $location.path('/login'));
+      // };
       enrolleeService.fetchAll()
       .then(enrollees => {
         this.enrollees = enrollees;
