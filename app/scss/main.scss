@@ -1,6 +1,6 @@
 @import "custombootstrap";
+@import "_theme";
+@import "base";
+@import "layout";
 
-html, body {
-  width: 100%;
-  background: blue;
-}
+@include base;
