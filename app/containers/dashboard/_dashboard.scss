@@ -1,0 +1,35 @@
+@import  "../../scss/_theme.scss";
+@import "../../scss/_custombootstrap";
+
+* {
+  position: static;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  box-sizing: border-box; // do this or padding will break your layout
+}
+
+.dashboard {
+  height:100%;
+  font-family: $font-lora;
+  button{
+    width:18%;
+    border-radius: $btn-border-radius-large;
+  }
+  .logout-btn {
+    width: 18%;
+  }
+  h1{
+    font-size: $font-size-h1;
+    margin-bottom: $s-margin-bottom * 2;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  // .enrollee-item {
+  //   height:100%;
+  //   background-color: $c-teal;
+  // }
+}
