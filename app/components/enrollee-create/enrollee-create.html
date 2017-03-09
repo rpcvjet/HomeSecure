@@ -1,16 +1,16 @@
 <div class="enrollee-create">
   <form novalidate ng-submit="$ctrl.handleSubmit()">
     <label> Name </label>
-    <input type="text" ng-model="$ctrl.enrollee.name" />
+    <input class="text-form" type="text" ng-model="$ctrl.enrollee.name" />
 
     <label> Password </label>
-    <input type="text" ng-model="$ctrl.enrollee.password" />
+    <input class="text-form" type="text" ng-model="$ctrl.enrollee.password" />
 
-    <div class="file-upload"
+    <button class="file-upload"
     ngf-select
     ng-model="$ctrl.enrollee.img">
-    Upload File Here
-    </div>
+    Upload Photo
+  </button>
 
     <button class="btn" type="submit"> Create Enrollee </button>
   </form>

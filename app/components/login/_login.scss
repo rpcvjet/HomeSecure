@@ -1,3 +1,7 @@
+@import "../../scss/_theme.scss";
+@import "../../scss/_custombootstrap";
+@import "../../scss/_layout.scss";
+
 .login {
   width: 50%;
   height: 100%;
@@ -10,12 +14,11 @@
   padding: 1em;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
+  margin-top: $s-margin-top * 2;
   border: .5em;
 }
 
 .login-message {
-  margin-top: 15%;
   width: 100%;
   vertical-align: middle;
   align-items: center;
@@ -25,6 +28,7 @@
 .email {
   width: 100%;
   margin-bottom: .5em;
+  padding: $form-padding;
   }
 
 .btn {
