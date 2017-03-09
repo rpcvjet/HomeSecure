@@ -1,9 +1,9 @@
 <div class="enrollee-item">
     <li>
       <img ng-src="{{ $ctrl.enrollee.img }}" </img>
-      <p>{{ $ctrl.enrollee.name }} </p>
-      <p>{{ $ctrl.enrollee.password }} </p>
-      <button class="btn" ng-click="$ctrl.handleDelete($ctrl.enrollee)"> x </button>
-    </li>
+      <p class="display-info">Name: {{ $ctrl.enrollee.name }} </p>
+      <p class="display-info">Password: {{ $ctrl.enrollee.password }} </p>
+      <button class="delete"
+            ng-click="$ctrl.handleDelete($ctrl.enrollee)"> DELETE </button> </li>
 </div>
 <!-- ng-repeat="item in $ctrl.enrollees track by $index" -->

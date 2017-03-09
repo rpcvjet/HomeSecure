@@ -1,5 +1,7 @@
 @import  "../../scss/_theme.scss";
 @import "../../scss/_custombootstrap";
+@import "../../scss/_layout.scss";
+
 
 * {
   position: static;
@@ -21,6 +23,45 @@
   li {
     list-style: none;
   }
+
+  .text-form {
+    width: 100%;
+    padding: $form-padding;
+    }
+
+  .file-upload {
+    display: block;
+    border-radius: 45px;
+    width: 8em;
+    height: 2em;
+    padding: $form-padding;
+    font-size: .5em;
+  }
+
+  .enrollee-item {
+    width: 27%;
+    display: inline-block;
+    margin-left: 2%;
+    border: .2em solid black;
+    padding: $form-padding * 2;
+    img {
+      border: .15em solid black;
+      padding: 0;
+    }
+  }
+
+  .delete {
+    width: 100%;
+    padding: $form-padding;
+  }
+
+  .display-info {
+    padding: 0;
+  }
+
+
+
+
 
   // .enrollee-item {
   //   height:100%;
