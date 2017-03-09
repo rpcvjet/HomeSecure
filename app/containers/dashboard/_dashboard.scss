@@ -11,7 +11,7 @@
 
 .dashboard {
   height:100%;
-  font-family: 'Lora', serif;
+  font-family: $font-lora;
   button{
     width:18%;
     border-radius: $btn-border-radius-large;

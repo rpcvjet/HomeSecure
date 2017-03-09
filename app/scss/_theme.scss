@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Six+Caps');
 // color vars
 $c-black: #000;
 $c-white: #fff;
@@ -19,6 +20,11 @@ $s-pad-top: 0.5em;
 $s-margin-bottom: 0.5em;
 $s-margin-left: 0.5em;
 $s-margin-right: 0.5em;
+
+
+//fonts
+$font-lora: 'Lora', serif;
+$font-six: 'Six Caps', sans-serif;
 
 // theme mixins
 @mixin border {
