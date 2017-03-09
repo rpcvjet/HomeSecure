@@ -24,12 +24,10 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
   // TODO: upload to kairos here then , firebase then create enrollee
   fs.readFileAsync(req.file.path)
   .then(buf => {
-    console.log('hit line 27????');
     let base64image = buf.toString('base64');
     return base64image;
   })
   .then((base64image) => {
-    console.log('hit line 32????');
     return superagent.post('https://api.kairos.com/enroll')
     .set('app_id', process.env.app_id)
     .set('app_key', process.env.app_key)
@@ -40,20 +38,11 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
     });
   })
   .then(() => {
-    console.log('hitting line 43???');
     let bucket = gstorage.bucket(`${process.env.FIREBASE_PROJECT_ID}.appspot.com`);
     return bucket.upload(req.file.path);
 
-// MAKE THIS OUT OF response.name below
-// `https://firebasestorage.googleapis.com/v0/b/homesecure-67979.appspot.com/o/${response.name}?alt=media`
-    // .catch(next);
-
   })
   .then(response => {
-    console.log('response==============================>',response[0].name);
-    console.log(req.body, 'whats here????');
-    // console.log('responseAGAIN==============================>',response);
-
     return new Enrollee ({
       id: subject_id,
       password: req.body.password,
@@ -63,14 +52,12 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
 
     }).save()
     .then(enrollee => {
-      console.log('you enrolled a user>>>>>>>>>>>>>>>>>>>>>>>', enrollee);
       res.json(enrollee);
     })
     .catch(next);
 
   })
   .catch(err => {
-    console.log('NOPEEEEEEEE', err);
     next(err);
   });
 
@@ -83,7 +70,7 @@ enrolleeRouter.get('/api/enrollee', bearerAuth, jsonParser, (req, res, next) => 
   .catch(next);
 });
 
-enrolleeRouter.get('/api/enrollee/:id', bearerAuth, jsonParser, (req, res, next) => {
+enrolleeRouter.get('/api/enrollee/:id', jsonParser, (req, res, next) => {
   debug('GET /api/enrollee/:id');
   Enrollee.findById(req.params.id)
   .then(enrollee => res.json(enrollee))

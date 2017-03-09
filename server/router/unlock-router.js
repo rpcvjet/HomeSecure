@@ -12,6 +12,7 @@ const superagent = require('superagent');
 const createError = require('http-errors');
 
 
+
 const unlockRouter = module.exports = new Router();
 
 unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, next) => {
@@ -34,14 +35,27 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
   })
   .then((response) => {
     if (response.body.images[0].transaction.status === 'failure')
-      throw createError(401, 'transaction failed, no match');
-    res.sendStatus(200);
-
+      throw createError(401, 'transaction failed, face did not match');
+    let enrolleeID = response.body.images[0].transaction.subject_id;
+    return enrolleeID;
+  })
+  .then(enrolleeID => {
+    Enrollee.findById(enrolleeID)
+    .then(value => {
+      return value;
+    })
+    .then(value => {
+      let enrolleePw = value.password;
+      if(enrolleePw == req.body.password){
+        res.sendStatus(200);
+      }
+      throw createError(401, 'transaction failed, passwords did not match');
+    })
+    .catch(next);
   })
   .catch(err =>{
     console.log(err);
     res.sendStatus(401);
-
   });
 
 });
