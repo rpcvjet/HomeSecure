@@ -4,7 +4,7 @@ const {Router} = require('express');
 const jsonParser = require('body-parser').json();
 const debug = require('debug')('homeSecure:enrollee-router');
 const multer = require('multer');
-// const Enrollee = require('../model/enrollee.js');
+const Enrollee = require('../model/enrollee.js');
 const upload = multer({dest:`${__dirname}/../assets/image`});
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
@@ -36,7 +36,7 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
   .then((response) => {
     if (response.body.images[0].transaction.status === 'failure')
       throw createError(401, 'transaction failed, face did not match');
-    res.sendStatus(200);
+    // res.sendStatus(200);
     let enrolleeID = response.body.images[0].transaction.subject_id;
     return enrolleeID;
   })

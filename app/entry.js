@@ -34,6 +34,11 @@ angular.module('homeSecure', [uiRouter, ngFileUpload])
       url: '/dashboard',
       template: '<dashboard></dashboard>',
     },
+    // {
+    //   name: 'enrollee',
+    //   url: '/enrollee-signup',
+    //   template: '<create-enrollee></create-enrollee>'
+    // }
   ];
   routes.forEach(route => $stateProvider.state(route));
 }]);

@@ -1,17 +1,24 @@
 <div class="enrollee-create">
-  <form novalidate ng-submit="$ctrl.handleSubmit()">
-    <label> Name </label>
-    <input class="text-form" type="text" ng-model="$ctrl.enrollee.name" />
+  <a ng-click="$ctrl.showModal = $ctrl.showModal ? false:true">Sign Up Enrollee</a>
 
-    <label> Password </label>
-    <input class="text-form" type="text" ng-model="$ctrl.enrollee.password" />
+  <div class="modal" id="create-enrollee" ng-show="$ctrl.showModal">
+    <div class="modal-container">
+        <form novalidate ng-submit="$ctrl.handleSubmit()">
+            <label> Name </label>
+            <input class="text-form" type="text" ng-model="$ctrl.enrollee.name" />
 
-    <button class="file-upload"
-    ngf-select
-    ng-model="$ctrl.enrollee.img">
-    Upload Photo
-  </button>
+            <label> Password </label>
+            <input class="text-form" type="text" ng-model="$ctrl.enrollee.password" />
 
-    <button class="btn" type="submit"> Create Enrollee </button>
-  </form>
+            <button class="file-upload"
+            ngf-select
+            ng-model="$ctrl.enrollee.img">
+            Upload Photo
+            </button>
+
+            <button class="btn" type="submit"> Create Enrollee </button>
+            <a class="modal-close" ng-click="$ctrl.showModal = $ctrl.showModal ? false:true">close</a>
+        </form>
+      </div>
+  </div>
 </div>

@@ -6,12 +6,8 @@ require('./_dashboard.scss');
 require('angular').module('homeSecure')
 .component('dashboard', {
   template: require('./dashboard.html'),
-  controller: ['$log', '$location', 'enrolleeService', 'authService', function($log, $location, enrolleeService, authService){
+  controller: ['$log', '$location', 'enrolleeService', function($log, $location, enrolleeService){
     this.$onInit = () => {
-      // this.enrolleeLogout = () => {
-      //   authService.logout()
-      //   .then(() => $location.path('/login'));
-      // };
       enrolleeService.fetchAll()
       .then(enrollees => {
         this.enrollees = enrollees;

@@ -1,0 +1,62 @@
+@import  "../../scss/_theme.scss";
+@import "../../scss/_custombootstrap";
+
+.modal-container {
+  z-index: 1;
+  position: fixed;
+  background-color: grey;
+  border: .2em solid black;
+  width: 70%;
+  max-width: 400px;
+  left: 50%;
+  top: 10%;
+  padding: 1em;
+  border-radius: 5px;
+
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.modal:target:before {
+  display: block;
+}
+
+.modal:before {
+  content: "";
+  position: fixed;
+  // display: none;
+  z-index: 1;
+  background-color: rgba(0,0,0,.8);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.modal:target .modal-container{
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.enrollee-create {
+background-color: $c-greylight;
+}
+
+.btn {
+  color: $app-white;
+  background-color: $c-greydark;
+  font-size-adjust: auto;
+  font-size: 1%;
+  display: inline-block;
+  width: 20em;
+}
+
+.modal-close {
+  float: right;
+}
+
+.file-upload {
+margin-top: .35em;
+}
