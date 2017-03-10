@@ -51,7 +51,13 @@ margin-left: $s-pad * 2;
   font-size-adjust: auto;
   font-size: 1%;
   display: inline-block;
-  width: 20em;
+  // margin-right: em;
+  width: 100%;
+}
+
+label {
+  color:$c-white;
+  text-align: center;
 }
 
 .modal-close {
@@ -60,4 +66,5 @@ margin-left: $s-pad * 2;
 
 .file-upload {
 margin-top: .35em;
+display: inline-block;
 }

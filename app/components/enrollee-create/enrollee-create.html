@@ -3,21 +3,21 @@
 
   <div class="modal" id="create-enrollee" ng-show="$ctrl.showModal">
     <div class="modal-container">
+      <label> Create A Enrollee </label>
         <form novalidate ng-submit="$ctrl.handleSubmit()">
-            <label> Name </label>
-            <input class="text-form" type="text" ng-model="$ctrl.enrollee.name" />
 
-            <label> Password </label>
-            <input class="text-form" type="text" ng-model="$ctrl.enrollee.password" />
+            <input class="text-form" type="text" ng-model="$ctrl.enrollee.name" placeholder="Name"/>
 
-            <button class="file-upload"
+            <input class="text-form" type="text" ng-model="$ctrl.enrollee.password" placeholder="Password"/>
+
+            <button type="button" class="file-upload"
             ngf-select
             ng-model="$ctrl.enrollee.img">
             Upload Photo
             </button>
 
-            <button class="btn" type="submit"> Create Enrollee </button>
-            <a class="modal-close" ng-click="$ctrl.showModal = $ctrl.showModal ? false:true">close</a>
+            <button class="btn" type="submit"> Create </button>
+            <a class="modal-close" ng-click="$ctrl.showModal = $ctrl.showModal ? false:true">x</a>
         </form>
       </div>
   </div>
