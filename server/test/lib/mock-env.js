@@ -7,6 +7,7 @@ process.env.app_key='33561cddc3553352eaed24429a411f0c';
 process.env.FIREBASE_PROJECT_ID = 'homesecure-67979';
 process.env.GCLOUD_PROJECT = process.env.FIREBASE_PROJECT_ID;
 process.env.FIREBASE_WEB_API_KEY = 'AIzaSyDLPg9v-CXvbjpW0w09e7iyGmyReK0UAuo';
+process.env.HOMESECURE_GALLERY='homesecuremvp';
 process.env.API_URL = 'http://localhost:3000';
 process.env.app_id = '889f0133';
 process.env.app_key = '33561cddc3553352eaed24429a411f0c';
