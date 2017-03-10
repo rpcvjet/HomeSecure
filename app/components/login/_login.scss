@@ -4,7 +4,25 @@
 
 .ng-scope {
   background-color: $c-tan;
+  // background-image: url("http://www.free-icons-download.net/images/locking-house-icons-84061.png");
+  // background-repeat: no-repeat;
+  // background-position: right;
+  // background-attachment: fixed;
 }
+.home {
+  margin: 0 auto;
+  width:40%;
+  height:60%;
+}
+
+// .login-page {
+//   background-image: url("http://www.free-icons-download.net/images/locking-house-icons-84061.png");
+//   background-repeat: no-repeat;
+//   background-position:right;
+//   background-attachment: fixed;
+//   padding-bottom:30%;
+//   background-size: 400px 400px;
+// }
 
 .login-header {
   font-family: $font-lora;
@@ -25,6 +43,7 @@
   margin:0 auto;
   margin-top: $s-margin-top * 2;
   border-radius: 0.5em;
+
 }
 
 .login-message {
@@ -45,9 +64,15 @@ input{
   border: none;
 }
 
+hr.style2 {
+	border-top: 3px double #8c8b8b;
+  width:50%;
+  margin: 0 auto;
+}
+
 .login-header{
-  background-color: $c-primary;
-  margin:0;
+  color: $c-primary;
+  margin:0 auto;
   width:50%;
 }
 
@@ -59,12 +84,16 @@ input{
 
 .login-btn {
   width:30%;
+  color:$c-white;
   display: inline-block;
-    margin-top: .4em;
+  margin-top: .4em;
+  background-color: $c-greylight *0.2;
 }
 
 .sign-btn {
   width:30%;
+  color:$c-white;
   display: inline-block;
-    margin-top: .4em;
+  margin-top: .4em;
+  background-color: $c-greylight * 0.2;
 }
