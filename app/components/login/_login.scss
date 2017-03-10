@@ -10,9 +10,10 @@
   // background-attachment: fixed;
 }
 .home {
+  // margin-top: -10em;
   margin: 0 auto;
-  width:40%;
-  height:60%;
+  width:35%;
+  height:50%;
 }
 
 // .login-page {
@@ -48,6 +49,7 @@
 
 .login-message {
   width: 100%;
+  margin-bottom: 1.5em;
   vertical-align: middle;
   align-items: center;
   text-align: center;
@@ -57,6 +59,7 @@
   width: 80%;
   margin-bottom: .5em;
   padding: $form-padding;
+  color: $c-primary * 0.8;
   border-bottom: 1px solid $c-black;
   }
 
@@ -71,7 +74,7 @@ hr.style2 {
 }
 
 .login-header{
-  color: $c-primary;
+  color: $c-primary * 0.8;
   margin:0 auto;
   width:50%;
 }
