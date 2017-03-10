@@ -24,7 +24,7 @@ li {
   position: relative;
   z-index: 0;
   background-color: $c-greydark;
-  width: 32%;
+  width: 30%;
   display: inline-block;
   margin-left: $s-pad * 2;
   border: 0.2em solid $c-greylight;
@@ -37,7 +37,7 @@ li {
     width:12em;
     height:12em;
     margin-top:10%;
-    margin-left: 10%;
+    // margin-left: 10%;
   }
   .enrollee-info {
     padding:$s-pad;
