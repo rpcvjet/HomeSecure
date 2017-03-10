@@ -23,18 +23,21 @@ li {
 .enrollee-item {
   position: relative;
   background-color: $c-greydark;
-  opacity: 0.8;
   width: 30%;
   display: inline-block;
   margin-left: $s-pad * 2;
   border: 0.2em solid $c-greylight;
   padding: $s-pad * 2;
   img {
-    border: .15em solid black;
     padding: 0;
-    max-width:100%;
-    max-height:auto;
+    max-width:500px;
+    max-height:500px;
     margin-top:10%;
+  }
+  .enrollee-info {
+    padding:$s-pad;
+    background-color: $c-white;
+    border-radius: 0.5em;
   }
   .delete {
     position: absolute;
@@ -63,15 +66,18 @@ li {
   padding: 0;
   font-weight: 200;
   font-family: monospace;
-  font-size: 1em;
-  color:$c-white;
+  font-size: 0.8em;
+  color:$c-grey;
+  text-align: align-left;
 
   span {
+    font-size: 0.9em;
     font-family: monospace;
-    color: $c-greylight;
+    color: $c-primary * 0.6;
   }
   .pw{
-    color:$c-greydark;
+    color:$c-white;
+    font-size: 0.8em;
 
     &:hover {
       color:$c-black;

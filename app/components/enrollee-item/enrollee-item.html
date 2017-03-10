@@ -2,9 +2,11 @@
     <li>
       <button class="btn delete"
             ng-click="$ctrl.handleDelete($ctrl.enrollee)">X</button>
-      <img ng-src="{{ $ctrl.enrollee.img }}" </img>
-      <p class="display-info"><span>Name</span>: {{ $ctrl.enrollee.name }} </p>
-      <p class="display-info"><span>Password</span>: <span class="pw">{{ $ctrl.enrollee.password }}</span> </p>
+      <img  ng-src="{{ $ctrl.enrollee.img }}" </img>
+      <div class="enrollee-info">
+        <p class="display-info"><span>Name</span>: {{ $ctrl.enrollee.name }} </p>
+        <p class="display-info"><span>Password</span>: <span class="pw">{{ $ctrl.enrollee.password }}</span> </p>
+      </div>
     </li>
 </div>
 <!-- ng-repeat="item in $ctrl.enrollees track by $index" -->
