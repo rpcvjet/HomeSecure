@@ -23,7 +23,7 @@ li {
 .enrollee-item {
   position: relative;
   z-index: 0;
-  background-color: $c-greydark;
+  background-color: $c-greylight * 0.7;
   width: 30%;
   display: inline-block;
   margin-left: $s-pad * 2;
