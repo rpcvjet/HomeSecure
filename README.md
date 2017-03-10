@@ -1,7 +1,7 @@
 # HomeSecure
 401 Final Project
-[![Build Status]]()
-[![Coverage Status]]()
+<!-- [![Build Status]]()
+[![Coverage Status]]() -->
 
 ### Team
 [Kenneth Edwards ](https://github.com/rpcvjet) |
@@ -10,30 +10,10 @@
 [Stephen Anderson](https://github.com/Sanderson239)
 
 ## Description
-A REST API that provides a backend support to a locking mechanism that utilizes facial recognition to manage lock/unlocking. A front-end site provides administrative privileges to a user for interacting with the restful API to add a lock and manage enrollees to provide access.
+A REST API built to provide backend support to [HomeSecure Client ](https://github.com/rpcvjet/HomeSecure-client) that utilizes facial recognition from the [Kairos API](https://www.kairos.com/) as well as speech to text password recognition from the [IBM Watson Devoloper Cloud ](https://www.ibm.com/watson/developercloud/speech-to-text.html)to manage lock/unlocking. The front-end site provides administrative privileges to a user for interacting with the restful API to add a lock and manage enrollees to provide access. Information created by user is stored on the [Google Cloud Platform ](https://cloud.google.com/storage/docs/authentication) with the [Firebase API](https://firebase.google.com/docs/) handling authentications.
 
 ## Server
 ### Models
-
-#### User Model
-- **username**
-  - *String*
-  - input, required, unique
-- **email**
-  - *String*
-  - input, required, unique
-- **password**
-  - *String*
-  - input, required
-- **authorization**
-  - provided by firebase, unique
-
-#### House Model
-- **name**
-  - *String*
-  - input, required
-- **userID**
-    - added by User model, required
 
 #### Enrollee Model
 - **name**
@@ -42,48 +22,22 @@ A REST API that provides a backend support to a locking mechanism that utilizes 
 - **password**
   - *String*
   - input, required
-- **houseID**
-  - added by House model, required
+- **enrolleeID**
+  - unique ID added by UUID, required
+- **image**
+  - *JPG or PNG*
+  - input, required
 - **base64 image**
   - input, required
 
 ### Routes
-#### User Routes
-##### Signup
-- `POST /api/signup`
-  - Create a user
-  - `200 OK`
-  - `400 Bad Request`
-  - `404 Not Found`
-  - `409 Conflict`
-
+#### Authorization Routes
 ##### Login
 - `GET /api/login`
   - Requires basic auth with username:password
   - Firebase provides JSON web token for requests requiring authorization
   - `200 OK`
   - `401 Unauthorized`
-
-##### Remove
-- `DELETE /api/remove`
-  - Requires basic auth with username:password
-  - Firebase provides JSON web token for requests requiring authorization
-  - `200 OK`
-  - `401 Unauthorized`
-
-#### House Routes
-##### Create a House (1 House per User)
-- `POST /api/house`
-  - Requires authorization
-  - authorization token provided by firebase
-
-##### Retrieve a House
-- `GET /api/house/:id`
-  - houseID parameter
-
-##### Edit a House
-- `PUT /api/house/:id`
-  - houseID parameter
 
 #### Enrollee Routes
 
@@ -103,20 +57,66 @@ A REST API that provides a backend support to a locking mechanism that utilizes 
   - authorization token provided by firebase
   - enrolleeID parameter
 
-##### Edit Enrollee by ID
-- `PUT /api/enrollees/:id`
-  - Requires authorization
-  - authorization token provided by firebase
-  - enrolleeID parameter
-
 ##### Delete Enrollee by ID
 - `DELETE /api/enrollees/:id`
   - Requires authorization
   - authorization token provided by firebase
   - enrolleeID parameter
 
+#### Unlock Routes
+  - Compares image/password sent by client to server
+  - Uses post request Enrollee post but with different end path
+
+##### Compare Client with enrollees
+- `POST /api/unlock`
+  - Requires enrolleeID parameter
+
 ## Middleware
 - **basic-auth-middleware**
   - implements firebase for user authentication
 - **bearer-auth-middleware**
   - implements firebase token authentication for POST, GET, and DELETE routes
+
+## Client Side
+### Services
+#### Admin-Service
+- Handles login
+- Handles token handshakes
+- Handles logout
+
+#### Enrollee-Service
+- Handles creation of new enrollees
+- Performs get request to grab all enrollees
+- Handles deletion of enrollees`
+
+### Containers
+#### Admin
+- Login splashpage using auth-service to reroute to dashboard if email and password combination is authorized
+- Has two controllers
+  - login
+  - header
+
+#### Dashboard
+- Admin page that utilizes Enrollee-Service to create/delete/view enrollees
+- Uses auth-service for logout
+- Has three Controllers
+  - Enrollee-Create
+  - Enrollee-Item
+  - header
+
+### Controllers
+#### Login
+ - Form requiring username/password for login
+
+#### Header
+- Site banner
+- Holds logout button
+
+#### Enrollee-Create
+- Form for creating new enrollees
+- Requires name, password, and image file to load
+
+#### Enrollee-Item
+- Populates dashboard page
+- Unique enrollees
+- Delete button to remove enrollee
