@@ -34,7 +34,7 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
     .send({
       'image' : base64image,
       'subject_id' : subject_id,
-      'gallery_name': '401Practice',
+      'gallery_name': process.env.HOMESECURE_GALLERY,
     });
   })
   .then(() => {
