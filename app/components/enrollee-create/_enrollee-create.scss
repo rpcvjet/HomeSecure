@@ -1,9 +1,8 @@
-@import "../../scss/_theme.scss";
+@import  "../../scss/_theme.scss";
 @import "../../scss/_custombootstrap";
-@import "../../scss/_layout.scss";
-
 
 .modal-container {
+  z-index: 1;
   position: fixed;
   background-color: grey;
   border: .2em solid black;
@@ -26,6 +25,7 @@
 .modal:before {
   content: "";
   position: fixed;
+  // display: none;
   z-index: 1;
   background-color: rgba(0,0,0,.8);
   top: 0;
@@ -41,16 +41,8 @@
 }
 
 .enrollee-create {
-padding: $form-padding;
-}
-
-.sign-up-enrollee {
-  padding: $form-padding;
-  font-size: .7em;
-}
-
-.sign-up-enrollee {
-
+  padding: $s-pad;
+margin-left: $s-pad * 2;
 }
 
 .btn {
@@ -59,7 +51,22 @@ padding: $form-padding;
   font-size-adjust: auto;
   font-size: 1%;
   display: inline-block;
-  width: 20em;
+  // margin-right: em;
+  width: 100%;
+}
+
+.create-exit{
+  position: absolute;
+  top:0;
+  left:95%;
+  &:hover{
+    color:$code-color;
+  }
+}
+
+label {
+  color:$c-white;
+  text-align: center;
 }
 
 .modal-close {
@@ -68,4 +75,5 @@ padding: $form-padding;
 
 .file-upload {
 margin-top: .35em;
+display: inline-block;
 }
