@@ -2,7 +2,7 @@
     <li>
       <button class="btn delete"
             ng-click="$ctrl.handleDelete($ctrl.enrollee)">X</button>
-      <img  ng-src="{{ $ctrl.enrollee.img }}" </img>
+      <img class="col-lg-6 img-responsive" ng-src="{{ $ctrl.enrollee.img }}" </img>
       <div class="enrollee-info">
         <p class="display-info"><span>Name</span>: {{ $ctrl.enrollee.name }} </p>
         <p class="display-info"><span>Password</span>: <span class="pw">{{ $ctrl.enrollee.password }}</span> </p>
