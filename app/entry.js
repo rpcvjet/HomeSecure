@@ -1,6 +1,6 @@
 'use strict';
 
-require('./scss/main.scss')
+require('./scss/main.scss');
 
 const angular = require('angular');
 const uiRouter = require('angular-ui-router');

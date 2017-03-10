@@ -7,8 +7,8 @@ const serverControl = require('./lib/server-control.js');
 
 let baseURL = process.env.API_URL;
 
-describe.only('testing enrollee router', function(){
-  this.timeout(20000);
+describe('testing enrollee router', function(){
+  this.timeout(30000);
   before(serverControl.start);
   after(serverControl.stop);
 
