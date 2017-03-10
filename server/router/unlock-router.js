@@ -17,6 +17,8 @@ const unlockRouter = module.exports = new Router();
 
 unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, next) => {
   debug('POST enrollee');
+  console.log(req.body);
+
   fs.readFileAsync(req.file.path)
   .then(buf => {
     let base64image = buf.toString('base64');
@@ -28,7 +30,7 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
     .set('app_key', process.env.app_key)
     .send({
       'image' : base64image,
-      'gallery_name': '401Practice',
+      'gallery_name': process.env.HOMESECURE_GALLERY,
       'threshold': '0.75',
       'max_num_results': 1,
     });
@@ -38,17 +40,20 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
       throw createError(401, 'transaction failed, face did not match');
     // res.sendStatus(200);
     let enrolleeID = response.body.images[0].transaction.subject_id;
+    console.log('req.body.images', response.body.images);
     return enrolleeID;
   })
   .then(enrolleeID => {
     Enrollee.findById(enrolleeID)
     .then(value => {
+      console.log('entrolle', value);
       return value;
     })
     .then(value => {
-      let enrolleePw = value.password;
-      if(enrolleePw == req.body.password){
-        res.sendStatus(200);
+      let enrolleePw = value.password.trim().toLowerCase();
+      console.log('entrolePW', enrolleePw);
+      if(enrolleePw == req.body.password.trim().toLowerCase()){
+        return res.sendStatus(200);
       }
       throw createError(401, 'transaction failed, passwords did not match');
     })
