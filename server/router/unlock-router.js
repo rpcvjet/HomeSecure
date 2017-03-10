@@ -28,7 +28,7 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
     .set('app_key', process.env.app_key)
     .send({
       'image' : base64image,
-      'gallery_name': '401Practice',
+      'gallery_name': process.env.HOMESECURE_GALLERY,
       'threshold': '0.75',
       'max_num_results': 1,
     });
