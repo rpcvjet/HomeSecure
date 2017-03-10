@@ -36,18 +36,6 @@ function enrolleeService($log, $http, authService, Upload) {
     .then(res => res.data)
     .catch(err => console.log(err.message));
   };
-  // return Upload.upload({
-  //   url,
-  //   headers: config.headers,
-  //   data: {
-  //     file: image.file,
-  //   },
-  // })
-  // .then(image => {
-  //
-  //     return $http.post(url, config, image);
-  //   })
-  // })
 
   enrolleeService.fetchAll = () => {
     return authService.tokenFetch()
@@ -61,7 +49,6 @@ function enrolleeService($log, $http, authService, Upload) {
       };
       return $http.get(url, config);
     })
-    // .then(res => res.data);
     .then(res => {
       console.log(res.data, 'data in service');
       return res.data;
@@ -83,24 +70,24 @@ function enrolleeService($log, $http, authService, Upload) {
     })
     .then(res => res.data);
   };
-  return enrolleeService;
-}
 
-enrolleeService.upload = (image) => {
-  return authService.tokenFetch()
-.then(token => {
-  let url = `${__API_URL__}/api/enrollee/`;
-  let headers = {
-    Authorization: `Bearer ${token}`,
-    Accept: 'application/json',
+  enrolleeService.upload = (image) => {
+    return authService.tokenFetch()
+    .then(token => {
+      let url = `${__API_URL__}/api/enrollee/`;
+      let headers = {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      };
+      return Upload.upload({
+        url,
+        headers,
+        data: {
+          file: image.file,
+        },
+      });
+    });
   };
 
-  return Upload.upload({
-    url,
-    headers,
-    data: {
-      file: image.file,
-    },
-  });
-});
-};
+  return enrolleeService;
+}
