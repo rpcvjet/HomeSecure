@@ -3,6 +3,7 @@
 
   <div class="modal" id="create-enrollee" ng-show="$ctrl.showModal">
     <div class="modal-container">
+      <a class="modal-close create-exit" ng-click="$ctrl.showModal = $ctrl.showModal ? false:true">x</a>
       <label> Create A Enrollee </label>
         <form novalidate ng-submit="$ctrl.handleSubmit()">
 
@@ -17,7 +18,6 @@
             </button>
 
             <button class="btn" type="submit"> Create </button>
-            <a class="modal-close" ng-click="$ctrl.showModal = $ctrl.showModal ? false:true">x</a>
         </form>
       </div>
   </div>

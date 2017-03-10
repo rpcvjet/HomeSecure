@@ -55,6 +55,15 @@ margin-left: $s-pad * 2;
   width: 100%;
 }
 
+.create-exit{
+  position: absolute;
+  top:0;
+  left:90%;
+  &:hover{
+    color:$code-color;
+  }
+}
+
 label {
   color:$c-white;
   text-align: center;

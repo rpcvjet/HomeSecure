@@ -44,9 +44,11 @@
   a {
     font-weight: bolder;
     color: $c-primary;
+    text-decoration: none;
 
     &:hover {
       color: $c-black;
+      text-decoration: none;
     }
   }
 

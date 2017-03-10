@@ -2,20 +2,29 @@
 @import "../../scss/_custombootstrap";
 @import "../../scss/_layout.scss";
 
+.ng-scope {
+  background-color: $c-tan;
+}
+
+.login-header {
+  font-family: $font-lora;
+  font-weight: 400;
+  font-size: 1em;
+  color:$c-brown * 0.9;
+}
 .login {
   width: 50%;
   height: 100%;
-  align: center;
-  justify-content: center;
-  background-color: green;
+  background-color: $c-white;
+  color:$c-grey;
   display: flex;
   align-self: center;
   text-align: center;
   padding: 1em;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1em;
+  margin:0 auto;
   margin-top: $s-margin-top * 2;
-  border: .5em;
+  border-radius: 0.5em;
 }
 
 .login-message {
@@ -26,12 +35,36 @@
 }
 
 .email {
-  width: 100%;
+  width: 80%;
   margin-bottom: .5em;
   padding: $form-padding;
+  border-bottom: 1px solid $c-black;
   }
 
-.btn {
-  width: 100%;
-  margin-top: .4em;
+input{
+  border: none;
+}
+
+.login-header{
+  background-color: $c-primary;
+  margin:0;
+  width:50%;
+}
+
+// .btn {
+//   width: 30%;
+//   margin-top: .4em;
+//   display: inline-block;
+// }
+
+.login-btn {
+  width:30%;
+  display: inline-block;
+    margin-top: .4em;
+}
+
+.sign-btn {
+  width:30%;
+  display: inline-block;
+    margin-top: .4em;
 }
