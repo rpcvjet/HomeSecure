@@ -14,50 +14,51 @@
 .dashboard {
   height:100%;
   font-family: $font-lora;
+  margin-left: $s-pad * 2;
   background-color: none;
   button{
     width:18%;
     border-radius: $btn-border-radius-large;
   }
 
-  li {
-    list-style: none;
-  }
-
-  .text-form {
-    width: 100%;
-    padding: $form-padding;
-    }
-
-  .file-upload {
-    display: block;
-    border-radius: 45px;
-    width: 8em;
-    height: 2em;
-    padding: $form-padding;
-    font-size: .5em;
-  }
-
-  .enrollee-item {
-    width: 27%;
-    display: inline-block;
-    margin-left: 2%;
-    border: .2em solid black;
-    padding: $form-padding * 2;
-    img {
-      border: .15em solid black;
-      padding: 0;
-    }
-  }
-
-  .delete {
-    width: 100%;
-    padding: $form-padding;
-  }
-
-  .display-info {
-    padding: 0;
-  }
+  // li {
+  //   list-style: none;
+  // }
+  //
+  // .text-form {
+  //   width: 100%;
+  //   padding: $form-padding;
+  //   }
+  //
+  // .file-upload {
+  //   display: block;
+  //   border-radius: 45px;
+  //   width: 8em;
+  //   height: 2em;
+  //   padding: $form-padding;
+  //   font-size: .5em;
+  // }
+  //
+  // .enrollee-item {
+  //   width: 27%;
+  //   display: inline-block;
+  //   margin-left: 2%;
+  //   border: .2em solid black;
+  //   padding: $form-padding * 2;
+  //   img {
+  //     border: .15em solid black;
+  //     padding: 0;
+  //   }
+  // }
+  //
+  // .delete {
+  //   width: 100%;
+  //   padding: $form-padding;
+  // }
+  //
+  // .display-info {
+  //   padding: 0;
+  // }
 
 
 

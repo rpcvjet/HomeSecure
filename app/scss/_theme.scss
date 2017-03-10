@@ -76,3 +76,17 @@ $font-six: 'Six Caps', sans-serif;
 .align-center {
   text-align: center;
 }
+
+.fluid-ratio-resize {
+	max-width: 960px; /* actual img width */
+	*height: 150px; /* actual img height - IE7 */
+	background-size: cover;
+	background-position: center;
+}
+.fluid-ratio-resize:after {
+	content: " ";
+	display: block;
+	width: 100%;
+	padding-top: 4.918%; /* slope */
+	height: 102.786px; /* start height */
+}

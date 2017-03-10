@@ -8,7 +8,7 @@ const serverControl = require('./lib/server-control.js');
 const baseURL = process.env.API_URL;
 // const userMocks = require('./lib/userMocks.js');
 
-describe.only('testing unlock router', function() {
+describe('testing unlock router', function() {
   this.timeout(30000);
   before(serverControl.start);
   before(done => {
