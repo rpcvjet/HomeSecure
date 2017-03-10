@@ -3,6 +3,8 @@
 
 .home-header {
   position: relative;
+  height: 11em;
+  text-align: center;
   margin: 0;
   margin-left: $s-pad * 4;
   background-color:$c-greylight;
@@ -28,14 +30,17 @@
     }
   }
 
-  h1{
+  .align-left {
     font-family: $font-six;
     padding:$s-pad;
     letter-spacing: 0.5em;
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: 600;
     margin-left: $s-margin-left;
     margin-bottom: $s-margin-bottom;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
 
     span {
       color:$code-color;
