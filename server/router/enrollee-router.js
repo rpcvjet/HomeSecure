@@ -21,6 +21,7 @@ const enrolleeRouter = module.exports = new Router();
 enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('image'), (req, res, next) => {
   debug('POST /api/enrollee');
   let subject_id = uuid.v1();
+  console.log(subject_id, 'line 24??????');
   // TODO: upload to kairos here then , firebase then create enrollee
   fs.readFileAsync(req.file.path)
   .then(buf => {
@@ -37,21 +38,23 @@ enrolleeRouter.post('/api/enrollee', bearerAuth, jsonParser, upload.single('imag
       'gallery_name': '401Practice',
     });
   })
-  .then(() => {
+  .then((res) => {
+    console.log(res.text, 'line 42');
     let bucket = gstorage.bucket(`${process.env.FIREBASE_PROJECT_ID}.appspot.com`);
     return bucket.upload(req.file.path);
 
   })
   .then(response => {
+    // console.log(req.body, 'hahahah');
+    console.log(subject_id, 'line 49');
     return new Enrollee ({
       id: subject_id,
       password: req.body.password,
       name: req.body.name,
       img: `https://firebasestorage.googleapis.com/v0/b/homesecure-67979.appspot.com/o/${response[0].name}?alt=media`,
-
-
     }).save()
     .then(enrollee => {
+      console.log(enrollee.id, 'line 57');
       res.json(enrollee);
     })
     .catch(next);

@@ -34,28 +34,33 @@ unlockRouter.post('/api/unlock', jsonParser, upload.single('image'), (req, res, 
     });
   })
   .then((response) => {
-    if (response.body.images[0].transaction.status === 'failure')
+    console.log(response, 'hahahahahahahahahahah');
+    if (response.body.images[0].transaction.status === 'failure'){
       throw createError(401, 'transaction failed, face did not match');
-    // res.sendStatus(200);
-    let enrolleeID = response.body.images[0].transaction.subject_id;
-    return enrolleeID;
+    } else {
+      // let enrolleeID = response.body.images[0].transaction.subject_id;
+      // console.log(enrolleeID, 'did we get an ID?');
+      // return enrolleeID;
+    }
   })
-  .then(enrolleeID => {
-    Enrollee.findById(enrolleeID)
+  .then(() => {
+    Enrollee.findById('552c2080-054f-11e7-b116-b1fd39ae89b9')
     .then(value => {
+      console.log(value, 'this is a value');
       return value;
     })
     .then(value => {
       let enrolleePw = value.password;
       if(enrolleePw == req.body.password){
         res.sendStatus(200);
+      }else{
+        throw createError(401, 'transaction failed, passwords did not match');
       }
-      throw createError(401, 'transaction failed, passwords did not match');
     })
     .catch(next);
   })
   .catch(err =>{
-    console.log(err);
+    console.log(err.message);
     res.sendStatus(401);
   });
 
