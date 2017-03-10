@@ -28,6 +28,11 @@
     }
   }
 
+  img {
+    max-width:100%;
+    max-height: auto;
+  }
+
   body {
     padding: $s-pad * 4.1;
   }
