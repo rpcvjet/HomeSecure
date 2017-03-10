@@ -22,6 +22,7 @@ li {
 
 .enrollee-item {
   position: relative;
+  z-index: 0;
   background-color: $c-greydark;
   width: 30%;
   display: inline-block;
