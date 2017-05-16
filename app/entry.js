@@ -5,10 +5,11 @@ require('./scss/main.scss');
 const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 const ngFileUpload  = require('ng-file-upload');
+const uiBootstrap = require('angular-ui-bootstrap');
 
-angular.module('homeSecure', [uiRouter, ngFileUpload])
+angular.module('homeSecure', [uiRouter, ngFileUpload, uiBootstrap])
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.when('', '/login');
+  $urlRouterProvider.when('', '/landing');
 
   let routes = [
     {
@@ -34,11 +35,11 @@ angular.module('homeSecure', [uiRouter, ngFileUpload])
       url: '/dashboard',
       template: '<dashboard></dashboard>',
     },
-    // {
-    //   name: 'enrollee',
-    //   url: '/enrollee-signup',
-    //   template: '<create-enrollee></create-enrollee>'
-    // }
+    {
+      name: 'landing',
+      url: '/landing',
+      template: '<landing></landing>',
+    },
   ];
   routes.forEach(route => $stateProvider.state(route));
 }]);
@@ -48,6 +49,7 @@ require('./service/enrollee-service.js');
 
 require('./containers/admin');
 require('./containers/dashboard');
+require('./containers/landing');
 
 require('./components/login');
 require('./components/enrollee-create');

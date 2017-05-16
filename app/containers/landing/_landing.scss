@@ -1,0 +1,10 @@
+@import  "../../scss/_theme.scss";
+@import "../../scss/_custombootstrap";
+
+* {
+  position: static;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  box-sizing: border-box; // do this or padding will break your layout
+}
