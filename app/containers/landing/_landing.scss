@@ -24,6 +24,7 @@ body,html {
   position: relative;
   /* The height of the container. Must be set, but it doesn't really matter what the value is. */
   height: 100vh;
+  overflow: hidden;
 
   /* For text formatting. */
   display: flex;
@@ -31,7 +32,15 @@ body,html {
   justify-content: center;
   color: white;
   // margin-bottom: 200px;
-  text-shadow: 0 0 5px #000;
+  text-decoration: none;
+}
+
+.heading {
+  font-size:5em;
+}
+
+.section p {
+  padding: 1em;
 }
 
 .parallax::after {
@@ -69,4 +78,31 @@ body,html {
 .bg2::after {
   background-image: url('../assets/room.jpeg');
   background-repeat: no-repeat;
+}
+
+.box {
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  top:-100px;
+  left:-350px;
+  width: 35%;
+  padding: 5vh;
+  background-color: #ff5a5f;
+  border-radius: 15px;
+}
+
+.button {
+  text-align: center;
+  padding: 12px;
+  background-color: #00a699;
+  width: 100px;
+  border-radius: 5px;
+  float: right;
+}
+
+.button a {
+  color: #f5f5f5;
+  text-decoration: none;
+  list-style: none;
 }
