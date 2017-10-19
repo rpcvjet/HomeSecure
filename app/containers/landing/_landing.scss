@@ -1,3 +1,204 @@
 @import  "../../scss/_theme.scss";
 @import "../../scss/_custombootstrap";
 @import "../../scss/_layout.scss";
+body,html {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  /* The height needs to be set to a fixed value for the effect to work.
+   * 100vh is the full height of the viewport. */
+  height:100vh;
+  /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+  overflow-x: hidden;
+  /* Enable scrolling on the page. */
+  overflow-y: auto;
+  /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
+  perspective: 2px;
+
+}
+
+.section {
+  /* Needed for children to be absolutely positioned relative to the parent. */
+  position: relative;
+  /* The height of the container. Must be set, but it doesn't really matter what the value is. */
+  height: 100vh;
+  overflow: hidden;
+
+  /* For text formatting. */
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  color: white;
+  // margin-bottom: 200px;
+  text-decoration: none;
+}
+
+.heading {
+  font-size:5em;
+}
+
+.section p {
+  padding: 1em;
+}
+
+.parallax::after {
+  /* Display and position the pseudo-element */
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* Move the pseudo-element back away from the camera,
+   * then scale it back up to fill the viewport.
+   * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
+  transform: translateZ(-1px) scale(1.5);
+  /* Force the background image to fill the whole element. */
+  background-size: 100%;
+  /* Keep the image from overlapping sibling elements. */
+  z-index: -1;
+}
+
+/* The styling for the static div. */
+.static {
+  background: $code-bg;
+  height: 80%;
+}
+
+/* Sets the actual background images to adorable kitties. This part is crucial. */
+.bg1::after {
+  background-image: url('../assets/simple.jpeg');
+  background-repeat: no-repeat;
+
+}
+
+.bg2::after {
+  background-image: url('../assets/room.jpeg');
+  background-repeat: no-repeat;
+
+}
+
+.box {
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  top:40px;
+  left:50px;
+  width: 35%;
+  padding: 5vh;
+  background-color: #ff5a5f;
+  border-radius: 15px;
+}
+
+.box p {
+  font-size: 1.1em;
+  padding-bottom: 1em;
+}
+
+.button {
+
+  text-align: center;
+  padding: 12px;
+  background-color: #00a699;
+  width: 100px;
+  border-radius: 5px;
+  float: right;
+  position: relative;
+  bottom: 20px;
+}
+
+.button a {
+  color: #f5f5f5;
+  text-decoration: none;
+  list-style: none;
+}
+
+section h3 {
+  font-size: 3.6em;
+  font-weight: 200px;
+  color: #484848;
+  position: relative;
+  top: 80px;
+  left: 200px;
+}
+
+.info-box {
+  display: block;
+  float:left;
+  width: 30%;
+  position: relative;
+  top: 70px;
+  left: 300px;
+}
+
+.item {
+  text-align: center;
+  padding: 2em 1.5em;
+  font-size: 1.2em;
+  color: #484848;
+}
+
+.item i {
+  font-size: 3em;
+  color: #ff5a5f;
+  padding-bottom:  0.2em;
+}
+
+.item h4 {
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 200;
+  color: #00a699;
+}
+
+.border {
+  display: block;
+  height: 2px;
+  background: #484848;
+  width: 15%;
+  margin: 1em auto 1.5em;
+}
+
+.foot-box {
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  top:260px;
+  left:220px;
+  width: 70%;
+  height: 30%;
+  padding: 5vh;
+  background-color: #ff5a5f;
+  border-radius: 15px;
+  text-align: center;
+
+  h2{
+    padding-top: 20px;
+    font-weight: 200;
+    font-size: 3em;
+  }
+
+  .button {
+    position: relative;
+    top: 15%;
+    right:42%;
+    width: 15%;
+    font-size: 1.1em;
+
+  }
+}
+
+.foot-tag {
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  top:58%;
+  left:4%;
+  font-size: 5em;
+  color:#484848;
+}

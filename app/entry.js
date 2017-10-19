@@ -5,8 +5,9 @@ require('./scss/main.scss');
 const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 const ngFileUpload  = require('ng-file-upload');
+const uiBootstrap = require('angular-ui-bootstrap');
 
-angular.module('homeSecure', [uiRouter, ngFileUpload])
+angular.module('homeSecure', [uiRouter, ngFileUpload, uiBootstrap])
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.when('', '/landing');
 

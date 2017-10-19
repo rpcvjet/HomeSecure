@@ -2,13 +2,7 @@
 @import "../../scss/_custombootstrap";
 @import "../../scss/_layout.scss";
 
-.ng-scope {
-  background-color: $c-tan;
-  // background-image: url("http://www.free-icons-download.net/images/locking-house-icons-84061.png");
-  // background-repeat: no-repeat;
-  // background-position: right;
-  // background-attachment: fixed;
-}
+
 .home {
   // margin-top: -10em;
   margin: 0 auto;
@@ -99,4 +93,15 @@ hr.style2 {
   display: inline-block;
   margin-top: .4em;
   background-color: $c-greylight * 0.2;
+}
+
+.go-home {
+  width: 50%;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  color:black;
+  font-size: 4em;
 }

@@ -1,179 +1,295 @@
-@import "theme";
 
-@mixin base {
-  body, body * {
-    width: 100%;
-    box-sizing: border-box;
-    color: $c-grey;
-    font-size: 4vw;
-    font-family: serif;
-    font-stretch: extra-condensed;
-    margin-bottom: $s-margin-bottom;
-    padding-top: $s-pad-top;
-
-    @media screen and (min-width: 400px){
-      font-size: 3vw;
-    }
-
-    @media screen and (min-width: 720px){
-      font-size: 2vw;
-    }
-
-    @media screen and (min-width: 1000px){
-      font-size: 1.5vw;
-    }
-
-    @media screen and (min-width: 1400px){
-      font-size: 1vw;
-    }
-  }
-
-  img {
-    max-width:100%;
-    max-height: auto;
-  }
-
-  body {
-    padding: $s-pad * 4.1;
-  }
-
-  button, a , input, select {
-    transition: color 500ms, background-color 500ms;
-  }
-
-  a {
-    font-weight: bolder;
-    color: $c-primary;
-    text-decoration: none;
-
-    &:hover {
-      color: $c-black;
-      text-decoration: none;
-    }
-  }
-
-
-  h1,h2,h3,h4,h5,h6 {
-    color: $c-black;
-  }
-
-
-
-  blockquote {
-    border-left: $s-pad solid $c-greylight;
-    padding-left: $s-pad;
-  }
-
-  strong {
-    font-weight: bolder;
-  }
-
-  em {
-    font-style: italic;
-  }
-
-  ul, ol {
-    margin-left: $s-pad * 2;
-    padding-left: $s-pad * 2;
-    color: $c-black;
-
-    ul {
-      list-style: none;
-    }
-
-    ol {
-      list-style: none;
-    }
-  }
-
-  ul {
-    list-style: initial;
-  }
-
-  ol {
-    list-style: decimal;
-  }
-
-  code, blockquote, pre, ul, ol, li, input, textarea {
-    font-family: monospace;
-    a {
-      font-family: monospace;
-    }
-  }
-
-
-  button, input, textarea, form * {
-    &:focus {
-      outline: none;
-    }
-  }
-
-  button {
-    outline: none;
-    color: $c-black;
-    font-weight: bolder;
-    background-color: $c-greylight;
-    cursor: pointer;
-    @include border;
-
-    &:hover {
-      background-color: $c-greylight * 0.7;
-    }
-
-    &:active{
-      background-color: $c-greylight * 0.5;
-    }
-  }
-
-  input[type="submit"] {
-    @extend button;
-  }
-
-  label {
-    font-size: 1.3em;
-    font-weight: bold;
-    line-height: 2em;
-  }
-
-  input {
-    @include border;
-  }
-
-  select {
-    @extend button;
-    border-radius: 0px;
-  }
-
-  textarea {
-    width: 100%;
-    resize: none;
-    height: auto;
-    font-size: 1.25em;
-    padding: $s-pad * 2;
-    @include border;
-  }
-
-
-  @media screen and (min-width: 480px){
-    @include headingRatio(1.1);
-  }
-
-  @media screen and (min-width: 720px){
-    @include headingRatio(0.8);
-  }
-
-  @media screen and (min-width: 1000px){
-
-    body {
-      width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media screen and (min-width: 1500px){
-      @include headingRatio(0.4);
-    }
-  }
-
-
+ * {
+ font-family: helvetica;
 }
+
+body {
+ min-height: 100%;
+ width: 100%;
+ margin: 0;
+ padding: 0;
+ position:relative;
+}
+
+// button {
+//  border: none;
+//  border-radius: 3px;
+//  background: #fff;
+//  padding: 4% 12%;
+//
+//  &:hover {
+//    cursor: pointer;
+//  }
+// }
+//
+// .input-std {
+//  font-weight: light;
+//  height: 40px;
+//  width: 35%;
+//  border-style:solid;
+//  border-color:$brand-secondary;
+//  border-width:3px 3px;
+//  border-radius: 5px 5px 5px;
+// }
+//
+// input[type=text]{
+//  font-family:$font-secondary;
+//  font-size: x-large;
+//  padding: 2% 15%;
+//  text-transform: capitalize;
+//  color: $brand-secondary;
+//  margin: $gutter / 9;
+//
+//  &:focus {
+//    background-color: $brand-primary;
+//  }
+// }
+//
+// // input[type=number]{
+// //  font-family:$font-secondary;
+// //  font-size: x-large;
+// //  padding: 10px;
+// //  width: 35%;
+// //  text-transform: capitalize;
+// //  color: $brand-secondary;
+// //  margin: $gutter / 9;
+// //  &:focus {
+// //    background-color: $brand-primary;
+// //  }
+// //  p{
+// //    font-family: $font-secondary;
+// //    font-size: 20px;
+// //    text-indent: 15px;
+// //    margin:5px;
+// //  }
+// // }
+//
+// // textarea[type=text]{
+// //  font-family:$font-secondary;
+// //  font-size: x-large;
+// //  padding: 10px;
+// //  color: $brand-secondary;
+// //  &:focus {
+// //    background-color: $brand-primary;
+// //  }
+// // }
+//
+// h1{
+//  text-align: center;
+//  // font-family:$font-primary;
+//  font-size: 5vw;
+//  font-weight:bold;
+//  // margin: $gutter / 3;
+//  // margin-top:$gutter;
+//  // color: $brand-secondary;
+// }
+//
+// h2{
+//  // font-family:$font-primary;
+//  font-size: 3.5vw;
+//  font-weight:bold;
+//  // margin: $gutter / 3;
+//  // margin-top:$gutter;
+//  // color: $brand-secondary;
+//  text-transform: capitalize;
+// }
+
+// p{
+//  font-family: $font-secondary;
+//  font-size: 20px;
+//  margin:5px;
+//  text-transform: capitalize;
+// }
+
+
+// .btn-std{
+//  margin-bottom: 15px;
+//  margin-top:15px;
+//  border-style:solid;
+//  border-color: $brand-secondary;
+//  border-width:1px 1px;
+//  border-radius: 5px 5px 5px;
+//  // padding: $gutter/5;
+//  // font-family: $font-secondary;
+// }
+
+// fieldset {
+//  margin: 2% 0;
+// }
+// @mixin base {
+//   body, body * {
+//     width: 100%;
+//     box-sizing: border-box;
+//     color: $c-grey;
+//     font-size: 4vw;
+//     font-family: serif;
+//     font-stretch: extra-condensed;
+//     margin-bottom: $s-margin-bottom;
+//     padding-top: $s-pad-top;
+//
+//     @media screen and (min-width: 400px){
+//       font-size: 3vw;
+//     }
+//
+//     @media screen and (min-width: 720px){
+//       font-size: 2vw;
+//     }
+//
+//     @media screen and (min-width: 1000px){
+//       font-size: 1.5vw;
+//     }
+//
+//     @media screen and (min-width: 1400px){
+//       font-size: 1vw;
+//     }
+//   }
+//
+//   img {
+//     max-width:100%;
+//     max-height: auto;
+//   }
+//
+//   body {
+//     padding: $s-pad * 4.1;
+//   }
+//
+//   button, a , input, select {
+//     transition: color 500ms, background-color 500ms;
+//   }
+//
+//   a {
+//     font-weight: bolder;
+//     color: $c-primary;
+//     text-decoration: none;
+//
+//     &:hover {
+//       color: $c-black;
+//       text-decoration: none;
+//     }
+//   }
+//
+//
+//   h1,h2,h3,h4,h5,h6 {
+//     color: $c-black;
+//   }
+//
+//
+//
+//   blockquote {
+//     border-left: $s-pad solid $c-greylight;
+//     padding-left: $s-pad;
+//   }
+//
+//   strong {
+//     font-weight: bolder;
+//   }
+//
+//   em {
+//     font-style: italic;
+//   }
+//
+//   ul, ol {
+//     margin-left: $s-pad * 2;
+//     padding-left: $s-pad * 2;
+//     color: $c-black;
+//
+//     ul {
+//       list-style: none;
+//     }
+//
+//     ol {
+//       list-style: none;
+//     }
+//   }
+//
+//   ul {
+//     list-style: initial;
+//   }
+//
+//   ol {
+//     list-style: decimal;
+//   }
+//
+//   code, blockquote, pre, ul, ol, li, input, textarea {
+//     font-family: monospace;
+//     a {
+//       font-family: monospace;
+//     }
+//   }
+//
+//
+//   button, input, textarea, form * {
+//     &:focus {
+//       outline: none;
+//     }
+//   }
+//
+//   button {
+//     outline: none;
+//     color: $c-black;
+//     font-weight: bolder;
+//     background-color: $c-greylight;
+//     cursor: pointer;
+//     @include border;
+//
+//     &:hover {
+//       background-color: $c-greylight * 0.7;
+//     }
+//
+//     &:active{
+//       background-color: $c-greylight * 0.5;
+//     }
+//   }
+//
+//   input[type="submit"] {
+//     @extend button;
+//   }
+//
+//   label {
+//     font-size: 1.3em;
+//     font-weight: bold;
+//     line-height: 2em;
+//   }
+//
+//   input {
+//     @include border;
+//   }
+//
+//   select {
+//     @extend button;
+//     border-radius: 0px;
+//   }
+//
+//   textarea {
+//     width: 100%;
+//     resize: none;
+//     height: auto;
+//     font-size: 1.25em;
+//     padding: $s-pad * 2;
+//     @include border;
+//   }
+//
+//
+//   @media screen and (min-width: 480px){
+//     @include headingRatio(1.1);
+//   }
+//
+//   @media screen and (min-width: 720px){
+//     @include headingRatio(0.8);
+//   }
+//
+//   @media screen and (min-width: 1000px){
+//
+//     body {
+//       width: 1000px;
+//       margin-left: auto;
+//       margin-right: auto;
+//     }
+//
+//     @media screen and (min-width: 1500px){
+//       @include headingRatio(0.4);
+//     }
+//   }
+//
+//
+// }
