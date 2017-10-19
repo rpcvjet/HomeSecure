@@ -78,6 +78,7 @@ body,html {
 .bg2::after {
   background-image: url('../assets/room.jpeg');
   background-repeat: no-repeat;
+
 }
 
 .box {
@@ -90,6 +91,11 @@ body,html {
   padding: 5vh;
   background-color: #ff5a5f;
   border-radius: 15px;
+}
+
+.box p {
+  font-size: 1.1em;
+  padding-bottom: 1em;
 }
 
 .button {
@@ -154,4 +160,45 @@ section h3 {
   background: #484848;
   width: 15%;
   margin: 1em auto 1.5em;
+}
+
+.foot-box {
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  top:260px;
+  left:220px;
+  width: 70%;
+  height: 30%;
+  padding: 5vh;
+  background-color: #ff5a5f;
+  border-radius: 15px;
+  text-align: center;
+
+  h2{
+    padding-top: 20px;
+    font-weight: 200;
+    font-size: 3em;
+  }
+
+  .button {
+    position: relative;
+    top: 15%;
+    right:42%;
+    width: 15%;
+    font-size: 1.1em;
+
+  }
+}
+
+.foot-tag {
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  top:58%;
+  left:4%;
+  font-size: 5em;
+  color:#484848;
 }

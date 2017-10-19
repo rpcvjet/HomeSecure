@@ -8,4 +8,11 @@ require('angular').module('homeSecure')
     user: '<',
     handleSubmit: '<',
   },
+  controller:['$location', function($location){
+    this.$onInit = () => {
+      this.goHome = () => {
+        $location.path('/landing');
+      };
+    };
+  }],
 });
