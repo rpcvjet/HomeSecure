@@ -27,9 +27,9 @@ body,html {
   overflow: hidden;
 
   /* For text formatting. */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
   color: white;
   // margin-bottom: 200px;
   text-decoration: none;
@@ -65,7 +65,7 @@ body,html {
 /* The styling for the static div. */
 .static {
   background: $code-bg;
-  height: 85%;
+  height: 80%;
 }
 
 /* Sets the actual background images to adorable kitties. This part is crucial. */
@@ -84,8 +84,8 @@ body,html {
   margin: 0;
   box-sizing: border-box;
   position: relative;
-  top:-100px;
-  left:-350px;
+  top:40px;
+  left:50px;
   width: 35%;
   padding: 5vh;
   background-color: #ff5a5f;
@@ -93,16 +93,65 @@ body,html {
 }
 
 .button {
+
   text-align: center;
   padding: 12px;
   background-color: #00a699;
   width: 100px;
   border-radius: 5px;
   float: right;
+  position: relative;
+  bottom: 20px;
 }
 
 .button a {
   color: #f5f5f5;
   text-decoration: none;
   list-style: none;
+}
+
+section h3 {
+  font-size: 3.6em;
+  font-weight: 200px;
+  color: #484848;
+  position: relative;
+  top: 80px;
+  left: 200px;
+}
+
+.info-box {
+  display: block;
+  float:left;
+  width: 30%;
+  position: relative;
+  top: 70px;
+  left: 300px;
+}
+
+.item {
+  text-align: center;
+  padding: 2em 1.5em;
+  font-size: 1.2em;
+  color: #484848;
+}
+
+.item i {
+  font-size: 3em;
+  color: #ff5a5f;
+  padding-bottom:  0.2em;
+}
+
+.item h4 {
+  font-size: 2em;
+  line-height: 1.5;
+  font-weight: 200;
+  color: #00a699;
+}
+
+.border {
+  display: block;
+  height: 2px;
+  background: #484848;
+  width: 15%;
+  margin: 1em auto 1.5em;
 }
