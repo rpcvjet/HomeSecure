@@ -55,3 +55,5 @@ require('./components/login');
 require('./components/enrollee-create');
 require('./components/enrollee-item');
 require('./components/header');
+
+require('./components/landing-header');
